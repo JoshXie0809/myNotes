@@ -1,3 +1,15 @@
+
+# My thought:
+
+#   K^100
+# = (K^2)^50
+# = (K^4)^25
+# = (K^4)^1 %*% (K^8)^12
+# = (K^4)^1 %*% (K^16)^6
+# = (K^4)^1 %*% (K^32)^3
+# = (K^4)^1 %*% (K^32)^1 %*% (K^64)^1
+
+
 `%^%` <- function(K, n) {
   I <- diag(ncol(K))
   power <- function(A, n) {
@@ -12,11 +24,17 @@
   return(power(K, n))
 }
 
+# create a matrix which cannot be diaognalized
+
 K <- matrix(
   c(1/5, 2/5, 2/5,
     0, 0, 1,
     1/2, 0, 1/2), ncol = 3, byrow = T
 )
 
-K %^% 1000
+
+# and compute with power 100
+# K %*% K %*% K ...... (100 times) ...
+
+K %^% 100
 
