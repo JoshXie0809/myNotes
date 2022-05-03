@@ -24,7 +24,9 @@
   return(power(K, n))
 }
 
-# create a matrix which cannot be diaognalized
+# create a matrix which cannot be diagonalized
+# if a matrix K = P %*% D %*% P.inv
+# use K^n = P %*% D^n %*% P.inv
 
 K <- matrix(
   c(1/5, 2/5, 2/5,
