@@ -1,31 +1,3 @@
-
-# to simplify question a create a class to be a cycle container.
-
-Container <- setRefClass(
-    "Container", fields = list(cycle = "numeric"),
-    methods = list( 
-        add = function(newItem) { cycle <<- c(cycle, newItem) },
-        check = function(item) { item %in% cycle } )
-)
-
-# create a cycle with initial value
-cycle1 <- Container(cycle = 2)
-cycle1
-
-# add next
-cycle1$add(23)
-cycle1
-
-# check 3 in this cycle?
-cycle1$check(3)
-# > FALSE
-
-# check 2 in this cycle?
-cycle1$check(2)
-# > TRUE
-
-
-
 # cycle problem
 # How many cycles?
 
@@ -61,6 +33,32 @@ cycle1$check(2)
 #  there are 2 cycles
 #  1 -> 1;   2 -> 2
 
+
+
+# to simplify question a create a class to be a cycle container.
+
+Container <- setRefClass(
+    "Container", fields = list(cycle = "numeric"),
+    methods = list( 
+        add = function(newItem) { cycle <<- c(cycle, newItem) },
+        check = function(item) { item %in% cycle } )
+)
+
+# create a cycle with initial value
+cycle1 <- Container(cycle = 2)
+cycle1
+
+# add next
+cycle1$add(23)
+cycle1
+
+# check 3 in this cycle?
+cycle1$check(3)
+# > FALSE
+
+# check 2 in this cycle?
+cycle1$check(2)
+# > TRUE
 
 # i think this is an interesting wrinting method
 createContainer <- function ( initial ) {
