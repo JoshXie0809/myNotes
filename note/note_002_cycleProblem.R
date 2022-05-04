@@ -9,19 +9,19 @@ Container <- setRefClass(
 )
 
 # create a cycle with initial value
-Cycle1 <- Container(cycle = 2)
-Cycle1
+cycle1 <- Container(cycle = 2)
+cycle1
 
 # add next
-Cycle1$add(23)
-Cycle1
+cycle1$add(23)
+cycle1
 
 # check 3 in this cycle?
-Cycle1$check(3)
+cycle1$check(3)
 # > FALSE
 
 # check 2 in this cycle?
-Cycle1$check(2)
+cycle1$check(2)
 # > TRUE
 
 
