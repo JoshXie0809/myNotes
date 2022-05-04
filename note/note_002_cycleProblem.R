@@ -27,6 +27,7 @@ cycle1$check(2)
 
 
 # cycle problem
+# How many cycles?
 
 # initial :
 #  1  2  3  4
