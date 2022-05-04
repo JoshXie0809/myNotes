@@ -40,11 +40,7 @@ Container <- setRefClass(
     "Container", fields = list(cycle = "numeric"),
     methods = list( 
             add = function(newItem) { cycle <<- c(cycle, newItem) },
-            check = function(Item) { Item %in% .self$cycle },
-            len = function(...) { length(.self$cycle)},
-            print = function(...) {
-                cat(paste( c(.self$cycle, .self$cycle[1]), collapse = '->'), 
-                    '\n' ) 
+            check = function(Item) { Item %in% .self$cycle }
             }
         )
 )
@@ -65,10 +61,5 @@ cycle1$check(3)
 cycle1$check(2)
 # > TRUE
 
-# check contained cycle length
-cycle1$len()
-
-# print this cycle
-cycle1$print()
 
 
