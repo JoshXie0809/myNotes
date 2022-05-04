@@ -5,7 +5,7 @@ Container <- setRefClass(
     "Container", fields = list(cycle = "numeric"),
     methods = list( 
         add = function(newItem) { cycle <<- c(cycle, newItem) },
-        check = function(Item) { Item %in% cycle } )
+        check = function(item) { item %in% cycle } )
 )
 
 # create a cycle with initial value
@@ -61,7 +61,19 @@ cycle1$check(2)
 #  1 -> 1;   2 -> 2
 
 
+# i think this is an interesting wrinting method
+createContainer <- function ( initial ) {
+    x <- initial
+    function (newItem ) {
+        x <<- c(x, newItem);
+        invisible( x )
+    }
+}
 
+a <- createContainer(c())
+a(1); a(2); a(3); a(4);
+cycle2 <- a(c())
+cycle2
 
 
 
