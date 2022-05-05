@@ -76,31 +76,80 @@ cycle1$print()
 
 
 
-# process a 
-
+# deal with process  
+# input a array which is after permutation
 listCycle <- function ( afterPermuation ) {
-  
+    
+  # if afterPermutation(ap) is c(4, 2, 1, 3)
+  # we know it come from c(1, 2, 3, 4)
   init <- 1:length(afterPermuation)
+  
+  # result
   res <- list()
   
+  
+  # ap   is c(4, 2, 1, 3)
+  # init is c(1, 2, 3, 4)
+  # if length(init) == 0 is true, we return res
+  
+  # we create a cycle begin with 1 (init[1])
+  # next we get ap 1st place is 4
+  # check 4 in this cycle?
+      # true: this cycle close, return cycle,
+      # false: add 4 in this cycle,
+  # then, answer is false, add 4
+  
+  # next, ap 4th place is 3
+  # check 3 in this cycle? 
+  # add 3 in this cycle
+  
+  # next, ap 3rd place is 1
+  # check 1 in this cycle?
+  # true, return cycle.
+  
   process <- function( container ) {
-    if( container$check( afterPermuation[ container$latest() ] ) ) {
-      return( container )
-    } 
-    
-    container$add( afterPermuation[ container$latest() ] )
-    return( process( container ) ) 
+      if( container$check( afterPermuation[ container$latest() ] ) ) {
+          return( container )
+      } 
+
+      container$add( afterPermuation[ container$latest() ] )
+      return( process( container ) ) 
   }
+  
+  # init is c(1, 2, 3, 4)
+  # 1st proce return cycle: 1 -> 4 -> 3 -> 1
+  # setdiff(init, 1st cycle) = 2
+  # go next time process
+  # until init = c(), length == 0 is true
   
   while ( length(init) > 0 ) {
-    cyc <- Container(cycle = init[1] )
-    res[[length(res)+1]] <- process(cyc)
-    init <- setdiff(init, cyc$cycle)
+      cyc <- Container(cycle = init[1] )
+      res[[length(res)+1]] <- process(cyc)
+      init <- setdiff(init, cyc$cycle)
   }
-  
+
   return( res )
-  
 }
 
 
+# try
 
+set.seed(1)
+ap <- sample(1:10, size = 10)
+ap
+
+# ap must be: 
+# [1]  9  4  7  1  2  5  3 10  6  8
+
+# the answer of cycle:
+# 1 -> 9 -> 6 -> 5 -> 2 -> 4 -> 1
+# 3 -> 7 -> 3 
+# 8 -> 10 -> 8
+
+res <- listCycle(ap)
+for( i in res) {
+    i$print()
+}
+# 1 -> 9 -> 6 -> 5 -> 2 -> 4 -> 1 
+# 3 -> 7 -> 3 
+# 8 -> 10 -> 8 
