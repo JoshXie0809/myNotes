@@ -43,7 +43,7 @@ Container <- setRefClass(
     check = function(Item) { Item %in% .self$cycle },
     latest = function(...) { .self$cycle[length(.self$cycle)] },
     print = function(...) { 
-      cat( paste(c(.self$cycle, .self$cycle[1]), collapse = '->'), '\n' ) 
+      cat( paste(c(.self$cycle, .self$cycle[1]), collapse = ' -> '), '\n' ) 
     }
   )
 )
@@ -66,12 +66,12 @@ cycle1$check(2)
 
 
 # what is the newest element in cycle2?
-cycle$latest()
+cycle1$latest()
 # [1] 23
 
-# print cycle2
-cycle2$print()
-# 2->23->2
+# print cycle1
+cycle1$print()
+# 2 -> 23 -> 2
 
 
 
