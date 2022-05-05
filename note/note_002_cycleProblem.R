@@ -37,11 +37,15 @@
 # to simplify question a create a class to be a cycle container.
 
 Container <- setRefClass(
-    "Container", fields = list(cycle = "numeric"),
-    methods = list( 
-            add = function(newItem) { cycle <<- c(cycle, newItem) },
-            check = function(Item) { Item %in% .self$cycle }
-        )
+  "Container", fields = list(cycle = "numeric"),
+  methods = list( 
+    add = function(newItem) { cycle <<- c(cycle, newItem) },
+    check = function(Item) { Item %in% .self$cycle },
+    latest = function(...) { .self$cycle[length(.self$cycle)] },
+    print = function(...) { 
+      cat( paste(c(.self$cycle, .self$cycle[1]), collapse = '->'), '\n' ) 
+    }
+  )
 )
 
 # create a cycle with initial value
@@ -59,6 +63,44 @@ cycle1$check(3)
 # check 2 in this cycle?
 cycle1$check(2)
 # > TRUE
+
+
+# what is the newest element in cycle2?
+cycle$latest()
+# [1] 23
+
+# print cycle2
+cycle2$print()
+# 2->23->2
+
+
+
+
+# process a 
+
+listCycle <- function ( afterPermuation ) {
+  
+  init <- 1:length(afterPermuation)
+  res <- list()
+  
+  process <- function( container ) {
+    if( container$check( afterPermuation[ container$latest() ] ) ) {
+      return( container )
+    } 
+    
+    container$add( afterPermuation[ container$latest() ] )
+    return( process( container ) ) 
+  }
+  
+  while ( length(init) > 0 ) {
+    cyc <- Container(cycle = init[1] )
+    res[[length(res)+1]] <- process(cyc)
+    init <- setdiff(init, cyc$cycle)
+  }
+  
+  return( res )
+  
+}
 
 
 
