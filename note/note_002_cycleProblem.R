@@ -41,7 +41,6 @@ Container <- setRefClass(
     methods = list( 
             add = function(newItem) { cycle <<- c(cycle, newItem) },
             check = function(Item) { Item %in% .self$cycle }
-            }
         )
 )
 
