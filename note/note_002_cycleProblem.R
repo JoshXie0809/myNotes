@@ -117,7 +117,7 @@ listCycle <- function ( afterPermuation ) {
   }
   
   # init is c(1, 2, 3, 4)
-  # 1st proce return cycle: 1 -> 4 -> 3 -> 1
+  # 1st process return cycle: 1 -> 4 -> 3 -> 1
   # setdiff(init, 1st cycle) = 2
   # go next time process
   # until init = c(), length == 0 is true
