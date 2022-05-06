@@ -10,7 +10,7 @@
   * [Annualizing Return](#annualizing.return)
   * [Average Returns](#average.returns)
   * [Contnuously Compounded (cc) Returns](#cc.return)
-* [CH2](https://github.com/JoshXie0809/myNotes/blob/main/note/note_004_financial_computing_mid1_ch2.md)
+* [CH2](https://github.com/JoshXie0809/myNotes/blob/main/note/note_004_financial_computing_mid1_ch2.md#ch2)
 
 ---
 
