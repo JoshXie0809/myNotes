@@ -6,6 +6,7 @@
   * [Simple Return](#simple.return)
     * [Portfolio Return](#portfolio.return)
   * [Adjusting for Dividends](#adj.for.dividends)
+  * [Adjusting for Inflation](#adj.for.inflation)
 
 
 
@@ -150,7 +151,7 @@ n <- 12
 [<h3 id="adj.for.dividends"> Adjusting for dividends </h3>](#index.top)
 
 > some companies will give thier share holders `dividends` \
-> how to compute the `simple return with dividends` ? \
+> how to compute the `simple return with dividends` ? 
 
 ```r
 # suppose dividends per share is d = 1
@@ -168,18 +169,44 @@ earning <- amount * p_2 + amount * d
 # so the formula of dividends case is
 # (p_2 + d) / p_1 - 1
 ```
-> so formula is ` (p_t + d) / p_(t-1) - 1`
+
+
+> so formula is ` (p_t + d) / p_(t-1) - 1` \
+>   =  `p_t / p_(t-1) - 1` + ` d / p_(t-1)` \
+>   =  `capital gain return` + `dividend yield`
+
+---
+
+[<h3 id="adj.for.inflation">Adjusting for Inflation</h3>](#index.top)
+
+> inflation is also a big issue \
+> so we must to adjusting it
+
+```r
+# we can find CPI at each period
+# then adjust each period
+p_1 <- 10.11
+CPI_1 <- 100.3
+
+p_2 <- 13.83
+CPI_2 <- 101.2
+
+real_p_1 <- p_1 / CPI_1
+real_p_2 <- p_2 / CPI_2
+
+# then compute the process same as simple return
+# we can get real_p2 / real_p1 - 1
+#         = ( p_2 / CPI_2 ) / ( p_1 / CPI_1 ) - 1
+#         = ( p_2 / p_1 ) * ( CPI_1 / CPI_2 ) - 1
+```
+[see Simple Return](#simple.return)
+
+> the formula = `( real_p_t / real_p_(t-1) ) - 1` \
+>             =  `( p_t / p_(t-1) ) * ( CPI_t / CPI_(t-1) ) - 1`
 
 
 
-
-
-
-
-
-
-
-
+---
 
 
 
