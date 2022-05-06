@@ -8,6 +8,8 @@
   * [Adjusting for Dividends](#adj.for.dividends)
   * [Adjusting for Inflation](#adj.for.inflation)
   * [Annualizing Return](#annualizing.return)
+  * [Average Returns](#average.returns)
+  * [Contnuously Compounded (cc) Returns](#cc.return)
 
 
 
@@ -220,6 +222,7 @@ real_p_2 <- p_2 / CPI_2
 ```r
 # the concept of Annualizing is you think all situations are the same
 # you can have the same efficiency to make or (loss) money
+# so extend ( or compress ) the period to one year ( annualizing )
 
 # plan A , 4 months, 0.05 simple return
 # extent to, 12 months
@@ -237,14 +240,116 @@ plan A |🏆 plan B
 -------|-------
 0.1576 |0.1699
 
+> formula is `( 1 + plan_return ) ^ ( 12 / plan_take_time_in_month ) - 1`
+
+---
+
+[<h3 id="average.returns">Average Returns</h3>](#index.top)
+
+> you invest in 2 plans at June and December \
+> June simple return is 0.07 \
+> December simple return is 0.24 \
+> what is your month average returns \
+> or generally speaking, what is your efficiency to make money?
+
+```r
+r1 <- 0.07
+r2 <- 0.24
+
+# Arithmetic average (must be misleading)
+( r1 + r2 ) / 2
+# 0.155
+# formula is ( r1 + r2 + ... + rn ) / n
+
+# Geometric average (better measure of average return)
+( ( 1 + r1 ) * ( 1 + r2 ) ) ^ ( 1 / 2 ) - 1
+# 0.151868
+```
+
+> the first method is simple but must be misleading \
+> the `concept of second method` is \
+> if you has $1000 and invest in plan 1 and plan 2
+>
+
+```r
+r1 <- 0.07
+r2 <- 0.24
+
+( earning <- 1000 * (1 + r1 ) * ( 1 + r2 ) )
+# 1326.8
+
+# simple return of 2 project is 
+earning / 1000 - 1
+# 0.3268
+# so you use two month to have 0.3268 
+# and what if you use only one month ?
+# or what is your average month returns ? 
+
+# we think there exists a average month returns
+# and you extend it 2 month like annualizing method
+# you get 0.3268 as 2 months returns
+# (1 + average.month.returns) ^ 2 - 1 = 0.3268
+# so average.month.retuens is
+( 1 + 0.3268 ) ^ ( 1 / 2 ) - 1
+# 0.151868
+```
+
+---
+
+[<h3 id="cc.return">Continuous Compounded Returns</h3>](#index.top)
+
+> we can transform simple return to average returns \
+> and you must think how to transform to cc return?
+
+```r
+# suppose a one month project;s simple return is 0.08
+r1 <- 0.08
+
+# we need to find out what cc return has same efficiency
+# e(r1.cc) = 1 + r1
+# so, obviously we just need to take a log
+# r1.cc = log(1 + r1)
+
+log(1 + r1)
+# 0.07696104
 
 
+p_1 <- 10.11
+p_2 <- 13.83
+
+# cc.return of this period is
+
+log( p_2 / p_1 )
+# 0.3133151
+
+# note: p_2 / p_1 = 1 + simple return
+# log(p_2 / p_1) = log(p_2) - log(p_1)
+
+# suppose we have p_3
+p3 <- 14.27
+
+# cc 2 month return is
+#   log( (p_3 / p_2)   *   (p_2 / p_1) )
+# = log(p_2 / p_1) +  log( p_3 / p_2)
+#  cc_first_month_return + cc_second_month_return
+# it is useful if we assume cc_month_return 
+# is i.i.d normally distributed every month
 
 
+# portfolio cc return
+# first compute portfolio simple return
+# ( x1*r1 + x2*r2 + x3*r3 + .... xn*rn )
+# take log
+# log( 1 + portfolio.simple return )
 
 
+# real_return (with out inflation)
+# log( ( p_2 / p_1 ) * ( CPI_1 * CPI_2) )
+# = log( p_2 / p_1 ) +  log( CPI_1 / CPI_2 )
+# = log( p_2 / p_1 ) - log ( CPI_2 / CPI_1 )
+# = cc.return - cc.infation
 
-
+```
 
 
 
