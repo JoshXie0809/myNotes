@@ -1,3 +1,5 @@
+<h1 id="index.top"> Index </h1>
+
 * [CH1](#ch1) 
   * [Compounding](#compounding)
   * [Effective Annual Rate](#E.A.R)
@@ -7,7 +9,7 @@
 
 
 
-<h2 id="ch1"> Ch1 </h2>
+[<h2 id="ch1"> Ch1 </h2>](#index.top)
 
 ---
 
@@ -38,7 +40,7 @@ n <- 10
 > 3. yr = ( FV / V ) ^( 1/n ) - 1
 > 4. n = log( FV / V ) / log ( 1 + yr )
 ---
-<h3 id="compounding"> Compounding </h3>
+[<h3 id="compounding"> Compounding </h3>](#index.top)
 
 ```r
 # if compounding 12 times in a year 
@@ -69,7 +71,7 @@ n <- 12
 # 1349.859
 ```
 ---
-<h3 id="E.A.R"> Effective Annual Rate </h3>
+[<h3 id="E.A.R"> Effective Annual Rate </h3>](#index.top)
 
 > if you want to invest, you must compute the gain \
 >  you must ask A or B, which is higher
@@ -101,7 +103,7 @@ n <- 12
 
 ---
 
-<h3 id="simple.return"> Simple Return </h3>
+[<h3 id="simple.return"> Simple Return </h3>](#index.top)
 
 > the concept if simple return is what we gain in the period \
 > for example I use $10000 dollars to buy a stock with price p_1 = 10.11 \
@@ -128,7 +130,7 @@ n <- 12
 ```
 > simple return = `p_t / p_(t-1)  - 1`
 
-<h3 id="portfolio.return">Portfolio Return</h3>
+[<h3 id="portfolio.return">Portfolio Return</h3>](#index.top)
 
 > it is common to split your money to invest in serval different shares \
 > how to compute this investing portfolio intest rate? \
@@ -144,7 +146,7 @@ n <- 12
 > `x1 * r1 + x2 * r2 + x3 * r3`, 0 < x1 + x2 + x3 < 1
 ---
 
-<h3 id="adj.for.dividends"> Adjusting for dividends </h3>
+[<h3 id="adj.for.dividends"> Adjusting for dividends </h3>](#index.top)
 
 
 
