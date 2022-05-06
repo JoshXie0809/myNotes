@@ -137,7 +137,7 @@ n <- 12
 > now suppose you only give `x1` ratio of your money invest in stock market  ( 0 < x1 < 1 ) \
 > other put under your bed \
 > your `whole` money interest rate is `x1 * r1 + (1-x1) * 0` \
-> the section x1 money contribute the portfolio return with `x1 * r1` \
+> the `section x1` money contribute the portfolio return with `x1 * r1` \
 > other section `1-x1` is put under your bed, so give `zero contribute` \
 > we can easily extend the portfolio return is \
 > `x1 * r1 + x2 * r2 + x3 * r3`, 0 < x1 + x2 + x3 < 1
