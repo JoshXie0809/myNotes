@@ -3,6 +3,7 @@
   * [Effective Annual Rate](#E.A.R)
   * [Simple Return](#simple.return)
     * [Portfolio Return](#portfolio.return)
+  * [Adjusting for Dividends](#adj.for.dividends)
 
 
 
@@ -142,6 +143,8 @@ n <- 12
 > we can easily extend the portfolio return is \
 > `x1 * r1 + x2 * r2 + x3 * r3`, 0 < x1 + x2 + x3 < 1
 ---
+
+<h3 id="adj.for.dividends"> Adjusting for dividends </h3>
 
 
 
