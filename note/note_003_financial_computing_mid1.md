@@ -144,9 +144,50 @@ n <- 12
 > other section `1-x1` is put under your bed, so give `zero contribute` \
 > we can easily extend the portfolio return is \
 > `x1 * r1 + x2 * r2 + x3 * r3`, 0 < x1 + x2 + x3 < 1
+
 ---
 
 [<h3 id="adj.for.dividends"> Adjusting for dividends </h3>](#index.top)
+
+> some companies will give thier share holders `dividends` \
+> how to compute the `simple return with dividends` ? \
+
+```r
+# suppose dividends per share is d = 1
+# we can think the sell price is actually p_2 + d
+p_1 <- 10.11
+p_2 <- 13.83
+d <- 1
+
+amount <- 10000 / p_1
+# you have amount units of shares
+# so the money you get from the company is amount * d
+earning <- amount * p_2 + amount * d
+# earning <- amount * (p_2 + d)
+# we set p_2' = p_2 + d
+# so the formula of dividends case is
+# (p_2 + d) / p_1 - 1
+```
+> so formula is ` (p_t + d) / p_(t-1) - 1`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
