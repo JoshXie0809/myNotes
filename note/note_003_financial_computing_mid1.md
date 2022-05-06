@@ -7,6 +7,7 @@
     * [Portfolio Return](#portfolio.return)
   * [Adjusting for Dividends](#adj.for.dividends)
   * [Adjusting for Inflation](#adj.for.inflation)
+  * [Annualizing Return](#annualizing.return)
 
 
 
@@ -207,11 +208,34 @@ real_p_2 <- p_2 / CPI_2
 
 
 ---
+[<h3 id="annualizing.return">Annualizing Return</h3>](#index.top)
+ 
+> similar to E.A.R sometimes you invest different stock \
+> plan A simple return is 0.05 in 4 month \
+> plan B simple return is 0.04 in 3 month \
+> which plan is more efficiently? 
 
+[see E.A.R](#E.A.R)
 
+```r
+# the concept of Annualizing is you think all situations are the same
+# you can have the same efficiency to make or (loss) money
 
+# plan A , 4 months, 0.05 simple return
+# extent to, 12 months
+(1 + 0.05) ^ ( 12 / 4 ) - 1
+# 0.157625 
+# not 0.05 * 3 (12 is 3 times for 4 months)
 
+# plan B
+(1 + 0.04) ^ ( 12 / 3 ) - 1
+# 0.1698586
+```
+> plan B has higher efficiency to make money
 
+plan A |🏆 plan B
+-------|-------
+0.1576 |0.1699
 
 
 
