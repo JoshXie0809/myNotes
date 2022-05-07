@@ -55,6 +55,7 @@ Skew(X) < 0  | Skew(X) = 0   | Skew(X) > 0
  `has long tail to the left` | ... | `has long tail to the right`
  
  
+ ---
  
 ### kurtosis : the measuremet of extreme events
  
