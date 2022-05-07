@@ -6,3 +6,12 @@
 
 ---
 [<h3 id="ch3">Ch3</h3>](#index.top)
+---
+
+### Bivariate R.V.
+
+<table>
+  <tr>
+    <td colsplan=5> X
+  </tr>
+</table>
