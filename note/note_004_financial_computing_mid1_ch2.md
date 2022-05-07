@@ -86,7 +86,7 @@ Normal distrution's `Kurtosis` | `Excess Kurtosis`
 # W1 = 10000 + N( mean = 10000 * 0.05, var = (10000) ^ 2 * (0.1)^2 )
 # W1 = N ( mean = 10500, var = ( 1000 ) ^ 2 )
 curve(dnorm(x, mean = 10500, sd = 1000), 
-      from = 9000, to = 12000,
+      from = 5000, to = 16000,
       xlab = "W1", ylab = " pdf(w1) ", 
       bty = 'l', main = "probability density function of W1" ) 
 ```
@@ -116,7 +116,72 @@ qnorm( 0.05, mean = 10500, sd = 1000 ) - 10000
 # at this example VaR at 5% is 1144.854
 ```
 
+### Q3 `cc Returns' VaR`
 
+> We can also use VaR conception in cc Returns
+
+```r
+# suppose you invest in a project with W0 = 10000
+# this project has monthly cc return r ~ N(mean = 0.05, var = (0.1)^2 )
+# what is the VaR at 5% in one month?
+
+# first, find cc return at 0.05
+(r_cc_0.05 <- qnorm(0.05, mean = 0.05, sd = 0.1))
+# -0.1144854
+# it means you have 5% probability to have cc return less tha -0.1144854
+
+# second, from ch1 we know, cc return can transform to simple return
+# exp(r_cc_0.05) = 1 + r_simple_0.05
+( r_simple_0.05 <- exp(r_cc_0.05) - 1 )
+# -0.108175
+
+( VaR_0.05 <- -r_simple_0.05 * 10000 )
+# 1081.75
+# you have 0.05 probability at least loss 1081.75
+
+```
+
+```r
+# now suppose you invest in this project a year
+# what is your year VaR at 0.01
+# suppose each month is indetically independent distributed 
+
+# first, calculate year cc return dist.
+# ry = r1 + r2 + r3 + ... + r12, ri = N(0.05, 0.1^2)
+# ry = N( mean = 12*0.05, var = 12 * 0.1^2 )
+
+# so ry_cc_0.01 is
+(ry_cc_0.01 <- qnorm(0.01, mean = 12*0.05, sd = sqrt(12 * 0.1^2) ) )
+# -0.2058705
+
+# second transform to simple return
+( ry_simple_0.01 <- exp(ry_cc_0.01) - 1 )
+# -0.1860616
+
+( year_VaR_0.01 <- -ry_simple_0.01 * 10000 )
+# 1860.616
+# you have 0.01 probability to loss at least $ 1860.616
+
+# we can do some simulations to varify
+set.seed(1)
+res <- replicate(50000, {
+    r_month_cc_array <- rnorm(12, mean = 0.05, sd = 0.1)
+    # e(r1) * e(r2) * e... * e(r12) = e(r1 + r2 + ... + r12) = e(year cc return)
+    r_year_cc <- sum( r_month_cc_array )
+    r_year_simple <- exp(r_year_cc) - 1
+    # now we have this year interset
+    r_year_simple * 10000
+})
+
+plot(density(res), bty='l', xlab = '$', ylab = "prob", main = '')
+abline(v = c(quantile(res, .01), -1860.616), 
+       col = c("blue", "red"), lwd = c(1, 4), lty = c(1, 2) )
+
+# you must find two line are close
+# blue line is simulation result
+# red  line is theory result
+
+```
 
 
 
