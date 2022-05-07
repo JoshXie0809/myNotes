@@ -40,7 +40,7 @@ simple return | cc return
 
 ---
  
-### Skewness : the test of symmetric
+[<h3>Skewness : the test of symmetric</h3>](#index.top)
  
 > `mu`, the mean of a random variable X\
 > `sd`, the standard deviaiton of a random variabe X\
@@ -57,7 +57,7 @@ Skew(X) < 0  | Skew(X) = 0   | Skew(X) > 0
  
  ---
  
-### kurtosis : the measuremet of extreme events
+[<h3> kurtosis : the measuremet of extreme events </h3>](#index.top)
  
 > `mu`, the mean of a random variable X\
 > `sd`, the standard deviaiton of a random variabe X\
@@ -73,8 +73,25 @@ Normal distrution's `Kurtosis` | `Excess Kurtosis`
 
 > `Excess Kurtosis` use normal dist. as standard 
 
- 
- 
+---
+
+[<h3> Some examples </h3>](#index.top)
+
+#### Q1
+```r
+# W0 = $10000
+# a project has simple return R ~ N( mean = 0.05, var = (0.1)^2)
+# W1 = W0 * ( 1 + R ), what is the distribution of W1?
+# W1 = 10000 + 10000 * R
+# W1 = 10000 + N( mean = 10000 * 0.05, var = (10000) ^ 2 * (0.01)^2 )
+# W1 = N ( mean = 10500, var = ( 100 ) ^ 2 )
+curve(dnorm(x, mean = 10500, sd = 100), 
+      from = 9000, to = 12000,
+      xlab = "W1", ylab = " pdf(w1) ", 
+      bty = 'l', main = "probability density function of W1" ) 
+```
+
+#### Q2 Value-at-Risk ( `VaR` )
  
  
  
