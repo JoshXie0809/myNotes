@@ -54,14 +54,15 @@ Skew(X) < 0  | Skew(X) = 0   | Skew(X) > 0
  `median < mu` | ... | `median > mu`
  `has long tail to the left` | ... | `has long tail to the right`
  
- > `mu`, the mean of a random variable X\
-> `sd`, the standard deviaiton of a random variabe X\
-> let g(x) = ((X-mu) / (sd))^4\
-> `Skewness` = E ( g(x) )
+
  ---
  
 [<h3> kurtosis : the measuremet of extreme events </h3>](#index.top)
  
+> `mu`, the mean of a random variable X\
+> `sd`, the standard deviaiton of a random variabe X\
+> let g(x) = ((X-mu) / (sd))^4\
+> `Kurtosis` = E ( g(x) )
 
 > `Kurtosis` measure the area far from mean, \
 > so the higer value of `Kurtosis` represent there's\
@@ -177,7 +178,7 @@ plot(density(res), bty='l', xlab = '$', ylab = "prob", main = '')
 abline(v = c(quantile(res, .01), -1860.616), 
        col = c("blue", "red"), lwd = c(1, 4), lty = c(1, 2) )
 
-# you must find two line are close
+# you must find two lines are close
 # blue line is simulation result
 # red  line is theory result
 
