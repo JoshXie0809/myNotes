@@ -57,7 +57,7 @@ Skew(X) < 0  | Skew(X) = 0   | Skew(X) > 0
  > `mu`, the mean of a random variable X\
 > `sd`, the standard deviaiton of a random variabe X\
 > let g(x) = ((X-mu) / (sd))^4\
-> `Skewness` = E ( g(x) )\
+> `Skewness` = E ( g(x) )
  ---
  
 [<h3> kurtosis : the measuremet of extreme events </h3>](#index.top)
