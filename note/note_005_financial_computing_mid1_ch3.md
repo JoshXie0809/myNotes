@@ -10,8 +10,38 @@
 
 ### Bivariate R.V.
 
-<table>
-  <tr>
-    <td colsplan=5> X
-  </tr>
-</table>
+|     |       |       |   `Y`    |         |
+|:---:|:-----:|:-----:|:--------:|:-------:|
+|     |  \    |    0  |    1     | Pr(`X`) |
+|`X`  |  0    |  1/8  |    0     |  1/8    |
+|     |  1    |  2/8  |   1/8    |  3/8    |
+|     |  2    |  1/8  |   2/8    |  3/8    |
+|     |  3    |    0  |   1/8    |  1/8    |
+|     |Pr(`Y`)|   4/8 |   4/8    |  1      |
+
+---
+
+> `conditional probability`
+>  
+```diff
+Pr( X = 1 ) = 3/8 
+Pr( X = 1 | Y = 1 ) = 1/8 
+```
+> 
+> `convariance`
+```diff
+Cov(X, Y) = E( X - EX ) ( Y - EY )
+-         = E(X Y - X EY  - Y EX + EX EY ) 
+-         = E(X Y) - E(X) EY - E(Y) EX + EX EY
+-         = E(X Y) - EX EY   - EY EX   + EX EY
++         = E(X Y) - EX EY
+
+
+!  if X and Y are independent. COV(X,Y) = 0
+```
+> `correlation`
+```diff
+@@   Corr(X, Y) = Cov(X, Y) / SD X / SD Y    @@
+```
+
+
