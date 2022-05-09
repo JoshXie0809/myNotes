@@ -29,18 +29,12 @@
 # if a matrix K = P %*% D %*% P.inv
 # use K^n = P %*% D^n %*% P.inv
 
-K <- matrix(
-  c(1/5, 2/5, 2/5,
-    0, 0, 1,
-    1/2, 0, 1/2), ncol = 3, byrow = T
-)
-
+# K <- matrix( c(1/5, 2/5, 2/5,
+#                  0, 0, 1,
+#                  1/2, 0, 1/2), ncol = 3, byrow = T)
 
 # and compute with power 100
 # K %*% K %*% K ...... (100 times) ...
+# K %^% 100
 
-print(K %^% 100)
-
-rm(K)
-gc()
 
