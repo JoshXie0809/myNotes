@@ -39,5 +39,8 @@ K <- matrix(
 # and compute with power 100
 # K %*% K %*% K ...... (100 times) ...
 
-K %^% 100
+print(K %^% 100)
+
+rm(K)
+gc()
 
