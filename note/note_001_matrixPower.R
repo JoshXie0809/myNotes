@@ -11,9 +11,8 @@
 
 
 `%^%` <- function(K, n) {
-  
-  
   power <- function(A, n) {
+    
     if( n %/% 2 >= 1 ) {
       B <- diag(ncol(A))
       if( n %% 2 == 1 ) B <- A
@@ -22,8 +21,7 @@
     }else{
       return(A)
     }
-  }
-  
+  } 
   return(power(K, n))
 }
 
