@@ -6,3 +6,14 @@
 * [CH4](#ch4)
 ---
 [<h3 id="ch4">Ch4</h3>](#index.top)
+
+```r
+
+# observed time serive Y with length t
+# Y = c(Y1, Y2, Y3, ... Yt)
+
+# strictly stationary is
+# joint probability density function is identical
+# pdf(Y1, Y2, Y3, ... Yt+1) = pdf(Ya, Ya+1, ... Ya+t)
+
+```
