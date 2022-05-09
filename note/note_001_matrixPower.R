@@ -11,10 +11,11 @@
 
 
 `%^%` <- function(K, n) {
-  I <- diag(ncol(K))
+  
   
   power <- function(A, n) {
     if( n %/% 2 >= 1 ) {
+      I <- diag(ncol(A))
       B <- ifelse( A %% 2 == 1, A, I)
       A.square <- A %*% A
       return(B %*% power(A.square, n %/% 2))
