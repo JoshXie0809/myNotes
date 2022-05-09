@@ -15,14 +15,15 @@
   
   power <- function(A, n) {
     if( n %/% 2 >= 1 ) {
-      I <- diag(ncol(A))
-      B <- ifelse( A %% 2 == 1, A, I)
-      A.square <- A %*% A
-      return(B %*% power(A.square, n %/% 2))
+      B <- diag(ncol(A))
+      if( n %% 2 == 1 ) B <- A
+      A <- A %*% A
+      return(B %*% power(A, n %/% 2))
     }else{
       return(A)
     }
   }
+  
   return(power(K, n))
 }
 
