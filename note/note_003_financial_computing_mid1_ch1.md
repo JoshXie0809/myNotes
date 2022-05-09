@@ -12,6 +12,7 @@
   * [Contnuously Compounded (cc) Returns](#cc.return)
 * [CH2](https://github.com/JoshXie0809/myNotes/blob/main/note/note_004_financial_computing_mid1_ch2.md#ch2)
 * [CH3](https://github.com/JoshXie0809/myNotes/blob/main/note/note_005_financial_computing_mid1_ch3.md#ch3)
+* [CH4](https://github.com/JoshXie0809/myNotes/blob/main/note/note_006_financial_computing_mid1_ch4.md#ch4)
 ---
 
 [<h2 id="ch1"> Ch1 </h2>](#index.top)
