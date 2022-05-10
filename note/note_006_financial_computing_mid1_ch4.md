@@ -15,5 +15,8 @@
 # strictly stationary is
 # joint probability density function is identical
 # pdf(Y1, Y2, Y3, ... Yt+1) = pdf(Ya, Ya+1, ... Ya+t)
+# 
+
+
 
 ```
