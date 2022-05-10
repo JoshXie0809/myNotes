@@ -34,4 +34,52 @@
 
 # if Cov(Yt, Yt+k), k > q, Cov = 0
 
+
+# AR(p) 
+# use AR(1) as example
+
+# Yt = d + a Y_t-1 + epsilon_t , epsilon ~ GWN(0, var)
+# E(Yt) = E( d +  a ( d + a Y_t-2 + epsilon_t-1 )
+#       = E( d + ad + a^2 d + a^3 d + .......
+#         + a^inf+1 Yt + epsilon .... )
+#      = d / (1 - a), for -1 < a < 1
+
+# Var(Yt)
+# E( Yt Y_t-k ) = Cov(Yt, Y_t-k) + mu^2
+# gamma_k = Cov(Yt, Y_t-k)
+
+# first both sides multiple Yt and find expected value
+# E(Yt Yt) = E(dYt + a Yt Y_t-1 + epsilon Y_t)
+# gamma0 + mu^2 = d*mu + a*(gamma1 + mu^2) + var   
+# gamma0 = var + {d*mu - (1 - a) mu^2} + a gamma1
+
+# second, both sides multiple Y_t-1 and find expected value 
+# E(Yt Y_t-1) = E(dYt + a Y_t-1 Y_t-1 + epsilon Y_t-1)
+# gamma1 + mu^2 = d*mu + a*(gamma0 + mu^2) 
+# gamma1 = {d*mu - (1-a) mu^2} + a gamma0
+
+# go to previos step and replace gamma1
+# gamma0 = var + {d*mu - (1 - a) mu^2} + a gamma1
+#        = var + {d*mu - (1 - a) mu^2} + a ( {d*mu - (1-a) mu^2} + a gamma0 )
+#        = var + {d*mu - (1 - a) mu^2} (1 + a) a gamma0
+# (1-a) gamma0 = var + {d*mu - (1 - a) mu^2} (1+a)
+
+
+# gamma0 = var / (1-a)    +       {d*mu - (1 - a) mu^2} * (1+a) / (1-a)
+# gamma1 = {d*mu - (1-a) mu^2} + a gamma0
+
+# gamma2
+# E(Yt Y_t-2) = E( dY_t-2 + aY_t-1 Y_t-2 + epsilon Y_t-2 )
+# gamma2 + mu^2 = d*mu + a*(gamma1 + mu^2)
+#               = {d*mu - (1 - a) mu^2} + a gamma1
+#               = {d*mu - (1 - a) mu^2} ( 1 + a) + a^2 gamma0
+
+# gamma3
+# E(Yt Y_t-3) = E( dY_t-3 + aY_t-1 Y_t-3 + epsilon Y_t-3 )
+# gamma3 + mu^2 = d*mu + a*(gamma2 + mu^2)
+#               = {d*mu - (1 - a) mu^2} + a gamma2
+#               = {d*mu - (1 - a) mu^2} ( 1 + a + a^2) + a^3 gamma0
+
+# gamma k
+# {d*mu - (1 - a) mu^2} * (1 - a^k)  / (1 - a)    + a^k gamma0
 ```
