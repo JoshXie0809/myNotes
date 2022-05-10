@@ -15,8 +15,16 @@
 # strictly stationary is
 # joint probability density function is identical
 # pdf(Y1, Y2, Y3, ... Yt+1) = pdf(Ya, Ya+1, ... Ya+t)
-# 
+# if {Yt} is strictly stationary, {Y^2_t) is also strictly stationary
 
+# since strictly stationary is so strict
+# we use covariance(weakly) stationary for alternative
+# if {Yt} is weakly stationary
+# E(Yt) = constant mu
+# var(Yt) = constant variance
+# cov(Yt, Y_t-k) is only correlate to time log k
 
+# simple time series model
+# MA(q) model
 
 ```
