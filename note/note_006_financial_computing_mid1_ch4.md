@@ -26,5 +26,12 @@
 
 # simple time series model
 # MA(q) model
+# Yt = mu + epsilon_t + theta_t-1 + epsilon_t-1 + .... theta_t-q elsilon_t-q, elsilon ~ GWN(0, var)
+# E(Yt) = mu
+# Var(Yt) = { 1^2 + theta_t-1 ^ 2 + ... + theta_t-q ^2 } * var
+# Cov(Yt, Yt+1) = Cov( mu +                         epsilon_t + theta_t-1 + epsilon_t-1 + ............................ + theta_t-q elsilon_t-q,
+                       mu + epsilon_t+1 + theta_t-1 epsilon_t + theta_t-2 + epsilon_t-1 + .... theta_t-q elsilon_t-q+1
+
+# if Cov(Yt, Yt+k), k > q, Cov = 0
 
 ```
