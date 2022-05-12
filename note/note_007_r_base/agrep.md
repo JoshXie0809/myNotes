@@ -104,8 +104,13 @@ agrepl(pattern, x, max.distance = 0.1, costs = NULL,
 @@ fixed @@ :   logical. If TRUE (default), the pattern is matched literally 
                 (as is). Otherwise, it is matched as a regular expression.
                 
-+ TRUE : pattern 使用字面來使用,
++ TRUE : pattern 使用字面來使用
 + FALSE : regex  來時使用
+
+@@ useBytes @@ :    logical. in a multibyte locale, should the comparison be character-by-character (the default) or byte-by-byte.
+
++ TRUE : 使用 byte 對照
+- FALSE: 使用 char 對照
 
 ```
 
