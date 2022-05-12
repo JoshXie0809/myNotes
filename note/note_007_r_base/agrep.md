@@ -55,9 +55,25 @@ agrepl(pattern, x, max.distance = 0.1, costs = NULL,
                         be replaced by the smallest integer not 
                         less than the corresponding fraction), 
                         or a list with possible components
+                        
+                        cost: maximum number/fraction of match cost 
+                        (generalized Levenshtein distance)
+                              
+                        all:  maximal number/fraction of all transformations 
+                            (insertions, deletions and substitutions)
+
+                        insertions: maximum number/fraction of insertions
+
+                        deletions: maximum number/fraction of deletions
+
+                        substitutions: maximum number/fraction of substitutions
+
+                        If cost is not given, all defaults to 10%, 
+                        and the other transformation number bounds 
+                        default to all. The component names can be 
+                        abbreviated.
 
 + “相似”是一個需要被定義的概念, max.distance 便是定義“相似”的參數
-
 + 他定義“相似”運作的方法, 便是限制修改次數。
 
 + 如 "appl" 與 "apple", "appl" 轉換為 "apple" 便是在字串
@@ -66,26 +82,34 @@ agrepl(pattern, x, max.distance = 0.1, costs = NULL,
 + 我們認為他們是相似的。 若我們定義 max.distance = 0, 
 + 因為 0 < 1, 故我們認為他們不是相似的。 
 
++ max.distance 可以輸入 int or double,
++ int : x 中字串可以調整『整數』次。
++ double : 輸入介於 0 - 1 的小數,  代表 pattern 字串長度的百分之幾
++ 看 example2
 
-@@ cost @@ :    cost: maximum number/fraction of match cost 
-                      (generalized Levenshtein distance)
-                              
-                all:  maximal number/fraction of all transformations 
-                      (insertions, deletions and substitutions)
-                              
-                insertions: maximum number/fraction of insertions
-                        
-                deletions: maximum number/fraction of deletions
-                        
-                substitutions: maximum number/fraction of substitutions
-                        
-                If cost is not given, all defaults to 10%, 
-                and the other transformation number bounds 
-                default to all. The component names can be 
-                abbreviated.
+
+@@ ignore.case @@ :    if FALSE, the pattern matching is case sensitive 
+                       and if TRUE, case is ignored during matching.
+
++ TRUE : 忽略大小寫的差異
+
+
+@@ value @@ :    if FALSE, a vector containing the (integer) indices of 
+                 the matches determined is returned and if TRUE, a vector 
+                 containing the matching elements themselves is returned.
+                 
++ TRUE :  回傳 x 中相似的字串, 而非位置
+
+
+@@ fixed @@ :   logical. If TRUE (default), the pattern is matched literally 
+                (as is). Otherwise, it is matched as a regular expression.
+                
++ TRUE : pattern 使用字面來使用,
++ FALSE : regex  來時使用
+
 ```
 
-#### example
+### example1
 
 ```r
 x <- c("appl", "aplle", "apple", "banana")
@@ -97,4 +121,17 @@ agrepl("apple", x)
 # return is TRUE  TRUE  TRUE FALSE
 
 # agrepl is agrep with logical return
+```
+
+
+### example2 
+```r
+agrep("laysy", c("1 lazy", "1", "1 LAZY"), max.distance = 1L )
+# interger(0)
+
+agrep("laysy", c("1 lazy", "1", "1 LAZY"), max.distance = 0.9 )
+# 1 2 3
+
+agrep("laysy", c("1 lazy", "1", "1 LAZY"), max.distance = 1.01 )
+# 1
 ```
