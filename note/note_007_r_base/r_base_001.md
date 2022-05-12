@@ -18,4 +18,4 @@ str1 <- c("apple", "banana")
 abbreviate(str1)
 ```
 img1
-![output](/img/abbreviate/img1.pmg)
+![output](./img/abbreviate/img1.pmg)
