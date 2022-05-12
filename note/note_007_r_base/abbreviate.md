@@ -17,8 +17,6 @@
 str1 <- c("apple", "banana")
 abbreviate(str1)
 ```
-img1
-
 <img alt="img1" src="./img/abbreviate/img1.png" style="width:250px" />
 
 ```r
