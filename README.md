@@ -8,3 +8,4 @@
 *  [go](https://github.com/JoshXie0809/myNotes/blob/main/note/note_004_financial_computing_mid1_ch2.md) _note 4 : 2022 financial computing mid1 - ch2_ 
 *  [go](https://github.com/JoshXie0809/myNotes/blob/main/note/note_005_financial_computing_mid1_ch3.md) _note 5 : 2022 financial computing mid1 - ch3_ 
 *  [go](https://github.com/JoshXie0809/myNotes/blob/main/note/note_006_financial_computing_mid1_ch4.md) _note 6 : 2022 financial computing mid1 - ch4_ 
+*  [go]() _note 7 : using r base_
