@@ -83,6 +83,8 @@ dbGetQuery(mydb, 'Select * From iris WHERE "Sepal.Length" < :len',
 dbDisconnect(mydb)
 ```
 
+---
+
 [<h3 id="sqlite">SQLite 語法筆記</h3>](#top)
 
 > SQLite is a public-domain software package. \
@@ -92,6 +94,7 @@ dbDisconnect(mydb)
 @@ RDBMS @@ 是一套被用在儲存大量用戶自定義資料的系統
 + 他可以進行深入且結合多資料庫的查詢指令，並進行簡單的資料統計。
 ```
+---
 
 [step 1, create /or open](#top)
 ```diff
@@ -130,6 +133,99 @@ select 3*4, 12, 21+2;
 @@ 我們完成了 sqlite 的初步使用 @@
 
 ```
+
+---
+
+[step 2, the SOL language](#top)
+> SQL : Structured Query Language
+
+```diff
+@@ create table @@ : 新增資料表
+@@ insert @@ : 新增資料到某個 table
+@@ select @@ : 查詢資料
+
+! 大小寫對 sqlite 是一樣的, 所以指令可以是 select 或 SElECT 或 SeLeCT
+! 註解可以用 -- 或 /*  */
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+@@ cross-database queries @@
+
+[[ database_name. ] table_name. ] column_name
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@@ 3-Valued logic @@
+
+sqlite 的邏輯值 有三個
+
+True, False, NULL
+
+! 值得注意的是 NULL 的相反仍是 NULL
++ 在 AND 中 FALSE > NULL > TRUE
++ 在 OR  中 TRUE > NULL > FALSE
+```
+
+Value | NOT Value
+|:-:|:-:|
+True|False
+False|True
+`NULL`|`NULL`
+
+使用 `AND`
+
+`AND` | TRUE | FALSE | NULL
+|:-:|:-:|:-:|:-:|
+TRUE| T | F | N
+FALSE| F | F | F
+NULL | N | F | N
+
+使用 `OR`
+
+`OR` | TRUE | FALSE | NULL
+|:-:|:-:|:-:|:-:|
+TRUE| T | T | T
+FALSE| T | F | N
+NULL | T | N | N
+
+```diff
+@@ simple operater @@
+
+1.) -, + : 正號, 負號
+
+2.) NOT : 邏輯值的相反
+
+3.) || : 字串合併
+
+4.) +, -, *, /, % : 加, 減, 乘, 除, 取餘數
+
+5.) <, <=, >=, > : 小於, 小於等於, 大於等於, 大於
+
+6.) =, ==, !=, <> : 等於, 等於, 不等於, 不等於
+
+7.) and, or : 邏輯值提件
+
+appendix 8.) 進階, IN, LIKE, GLOB, MATCH, REGEXP
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
