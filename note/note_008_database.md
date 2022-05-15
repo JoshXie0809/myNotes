@@ -136,7 +136,7 @@ select 3*4, 12, 21+2;
 
 ---
 
-[step 2, the SOL language](#top)
+[step 2, the SQL language](#top)
 > SQL : Structured Query Language
 
 ```diff
@@ -206,8 +206,116 @@ NULL | T | N | N
 
 7.) and, or : 邏輯值提件
 
-appendix 8.) 進階, IN, LIKE, GLOB, MATCH, REGEXP
+appendix 8.) 進階學習: IN, LIKE, GLOB, MATCH, REGEXP
+
 ```
+
+---
+
+[step 3, SQL data languages](#top)
+> SQL 指令可以分為 4 個種類
+
+```diff
+
+1.) Data Definition Language ( DDL )
+
++ which refer to commands that define the structure
++ of table, views, indexs, and other data containers 
++ and objects within the database. 
+
+定義 table 等資料庫的結構
+
+
+2.) Data Manipulation Language ( DML )
+
++ insert, update, delete, query ...
+
+使用關於資料庫數據的指令
+
+
+3.) Transaction Control language : 還沒看懂 
+
+4.) Data Control Language : 設定資料權限, 誰能碰觸資料的指令
+sqlite 沒有這一個部分
+
+```
+
+```diff
+@@ DDL @@
+
+簡單來說 DDL 就像 C/C++ 的標頭檔,
+先定義了資料庫的長相, 如某一個欄位
+必須是整數值, 要介於某個區間, 該欄
+的名字是... 等都屬於 DDL.
+
+the basis : create table
+
+create table example_table (
+    column_1_name  colum_1_type,
+    column_2_name  colum_2_type,
+    column_3_name  colum_3_type,
+    column_4_name  colum_4_type
+    -- ...
+);
+
+! 當 column_type 定義好後, 往後新增的資料
+! 都需要符合當出定義時的型態, 否則會出現錯誤
+
+@@ sqlite3 的資料種類 @@
+
+1.) NULL : 別問, 問就是 NULL
+
+
+2.) Integer : 整數
+
+範圍介於 -9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807
+
+
+3.) Float: 實數, 小數, C++ 的 double
+
+
+4.) Text: 文字 ( UTF-8, UTF-16BE, UTF-16LE )
+
+
+5.) BLOB: hexadecimal text string, begin with x'....'
+
+@@ sqlite3 column_type 設定 @@
+
+1.) Text :  
+
+若 column_type 設定為 “Text” 後, 往後新增資料,
+只能在此 column 放入 
+sqlite3 資料型態 NULL, Text, BLOB,
+! 若放入 ( float, integer ) 會強制轉換為字串
+
+2.) Numeric
+
+可以放入 sqlite 全部 5 種資料型態,
+但只有 integer, float, BLOB, NULL 會直接儲存,
+text 資料 sqlite 會先嘗試轉換為 integer 或是
+float 型態儲存, 若轉換失敗, 便以 text 儲存。
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
