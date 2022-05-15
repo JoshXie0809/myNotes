@@ -1,4 +1,4 @@
-[sqlite 語法](#sqlite)
+[<h3 id="top">sqlite 語法</h3>](#sqlite)
 
 ### 在 r 使用 sqlite
 
@@ -83,7 +83,7 @@ dbGetQuery(mydb, 'Select * From iris WHERE "Sepal.Length" < :len',
 dbDisconnect(mydb)
 ```
 
-<h3 id="sqlite">SQLite 語法筆記</h3>
+[<h3 id="sqlite">SQLite 語法筆記</h3>](#top)
 
 > SQLite is a public-domain software package. \
 > provides `relational database management system` or **`RDBMS`**.
@@ -93,7 +93,7 @@ dbDisconnect(mydb)
 + 他可以進行深入且結合多資料庫的查詢指令，並進行簡單的資料統計。
 ```
 
-#### step 1, create /or open
+[step 1, create /or open](#top)
 ```diff
 當你下載完成 sqlite 後, 可以打開終端機, 並輸入
 
