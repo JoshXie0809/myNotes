@@ -1,3 +1,5 @@
+[sqlite 語法](#sqlite)
+
 ### 在 r 使用 sqlite
 
 首先使用 `DBI` package
@@ -81,6 +83,7 @@ dbGetQuery(mydb, 'Select * From iris WHERE "Sepal.Length" < :len',
 dbDisconnect(mydb)
 ```
 
+<h3 id="sqlite">SQLite 語法筆記</h3>
 
 
 
