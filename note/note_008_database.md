@@ -85,7 +85,13 @@ dbDisconnect(mydb)
 
 <h3 id="sqlite">SQLite 語法筆記</h3>
 
+> SQLite is a public-domain software package. \
+> provides `relational database management system` or **`RDBMS`**.
 
+```diff
+  @@ RDBMS @@ 是一套被用在儲存大量用戶自定義資料的系統
++ 他可以進行深入且結合多資料庫的查詢指令，並進行簡單的資料統計那幫
+```
 
 
 
