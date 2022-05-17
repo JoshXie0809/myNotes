@@ -263,7 +263,9 @@ create table example_table (
 
 @@ sqlite3 的資料種類 @@
 
-1.) NULL : 別問, 問就是 NULL
+1.) NULL : 別問, 問就是 NULL, 
+
+基本上就是為了 NULL 才成立這個類別
 
 
 2.) Integer : 整數
@@ -279,6 +281,7 @@ create table example_table (
 
 5.) BLOB: hexadecimal text string, begin with x'....'
 
+
 @@ sqlite3 column_type 設定 @@
 
 1.) Text :  
@@ -288,14 +291,85 @@ create table example_table (
 sqlite3 資料型態 NULL, Text, BLOB,
 ! 若放入 ( float, integer ) 會強制轉換為字串
 
+
 2.) Numeric
 
 可以放入 sqlite 全部 5 種資料型態,
 但只有 integer, float, BLOB, NULL 會直接儲存,
 text 資料 sqlite 會先嘗試轉換為 integer 或是
-float 型態儲存, 若轉換失敗, 便以 text 儲存。
+float 型態儲存, 若轉換失敗, 便以 text 儲存
+
+
+3.) Integer
+
+該欄只可以放入 sqlite integer 資料型態, 
+其他資料型態除了 float 都會錯誤,
+! 而 float 會刪去小數部分, 變成 integer 
+
+
+4.) Flaot
+
+! 運作方式與 numeric 相同
+! 唯一區別是輸入 integer 會轉換成 float
+
+
+5.) None
+
+該欄不限制資型態, 
+所有資料都會以輸入時的型態儲存
+
+SQLite 欄資料型態運作 Rule
+
+1.) 若創造 data object 時, 沒有給定 column_type
+    則自動設定 None 作為該欄 column_type
+    
+2.) 資料型態不一定要輸入全名, 如 "INT" 會被認定為
+    integer, 因此輸入字串的縮寫即可
+ 
+3.) 若創造時字串含有 "CLOB" "CHAR" "TEXT", 會設定該欄
+    為 Text column_type
+
+4.) 若字串含有 "BLOB", 會設定該欄為 None column_type
+
+
+5.) 若創造時字串含有 "REAL" "FLOA" "DOUB", 會設定該欄
+    為 float column_type
+
+6. ) 如果字串沒有找到符合的 column_type, 會設定該欄
+    為 numeric column_type
+
+
+
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
