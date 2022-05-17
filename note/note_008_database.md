@@ -506,16 +506,132 @@ INSERT INTO tbl ( a, b, c ) VALUES ( 12, 20, 30 );
 
 
 example: 全選, * 代表全部 column
-select * from tbl
+select * from tbl;
+
++ a   b   c   id
++ --  --  --  --
++ 10  10  10  1 
++ 11  15  20  2 
++ 12  20  30  3 
 
 
 example: 取出所有 row 的 a, b column, 
          並以 b, a 排序
+select b, a from tbl;
+
++ b   a 
++ --  --
++ 10  10
++ 15  11
++ 20  12
+
+
+example: 取出 id = 2 row  所有 column
+select * from tbl where id = 2;
+
++ a   b   c   id
++ --  --  --  --
++ 11  15  20  2 
+
+
+@@ TCL @@
+像是 github 中上傳資料遇到衝突的設定
+但是有點複雜, 留給以後看, 先跳過
 
 ```
 
+---
+
+[step 5, select 詳細解說](#top)
+> 當想要從 table 得到資訊, 都需要 select 指令
+```diff
+
+SQL 中最常用的資料型態是 table
+創造 table 的指令是 create table
+
+一個 table 包含 
+@@ heading of a body @@
+
+heading 定義了欄的名字和 column_type,
+也定義了 column 的排序, 這些都是被固定的
 
 
+@@ body @@
+
+body 包含所有的 row, 每一個 row 中
+依序儲存著 column 的資料
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@@ select format @@
+
+select 的 pipeline ( 工作流 )
+
+SELECT [DISTINCT] select_heading 
+    FROM source_tables
+    
+    WHERE filter_expression
+    
+    GROUP BY grouping_expressions
+             HAVING filter_expression 
+             
+    ORDER BY ordering_expressions 
+    
+    LIMIT count
+    
+    OFFSET count
+
+
+1.) from source_tables
+指定一個或多個 tables 
+並合併成為一個暫時的 working table
+
+2.) where filter_expression
+根據 filter_expression 找出
+working table 中符合條件的 rows
+
+3.) group by grouping_expressions
+把 rows 中依照條件, 將他們分組
+
+4.) 依照 select select_heading
+把想要的 column 取出並依照 select_heading
+中的順序排列
+
+5.) having filter_expression
+因為有 3.) 的分組,
+在每個組中依照條件挑出 row
+
+6.) [DISTINCT]
+刪除重複的 row
+
+
+7.) order by order_expressions
+row 依照指示來排序
+
+
+8.) offset count
+將此時的 working table 從頭到 count 個 row 刪除  
+
+9.) limit count
+限制輸出 row 數
+
+``` 
+
+#### from 詳細解說
+
+```diff
+
+from 可以有數個資料 tables 
+他們會暫時合併
+
+合併的方法為使用 join 指令
+
+join 有數個種類: cross join, inner join, outer join
+
+@@ cross join @@
+
+
+```
 
 
 
