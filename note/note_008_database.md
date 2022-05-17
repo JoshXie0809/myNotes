@@ -617,7 +617,7 @@ row 依照指示來排序
 
 ``` 
 
-#### from 詳細解說
+#### 1.) from 詳細解說
 
 ```diff
 
@@ -757,18 +757,171 @@ C, D 設為 NULL 存到 result table
 
 select * from t1 left outer join t2 on A = C;
 
-# A  B  C  D  
-# -  -  -  ---
-# 3  a  3  2.3
-# 1  f  1  7.4
-# 1  q  1  7.4
-# 4  e        
-# 9  r  9  8.6
++ A  B  C  D  
++ -  -  -  ---
++ 3  a  3  2.3
++ 1  f  1  7.4
++ 1  q  1  7.4
++ 4  e        
++ 9  r  9  8.6
+
+有時候會遇到不同 table 之代表不同含義之 column
+卻擁有相同名字這時候, 使用 as 指令, 就可以在規避問題
+
+select * from t1 as x1 join t1 as x2 on main.x1.A = main.x2.A;
+select * from t1 as x1 join t1 as x2 on x1.A = x2.A;
+
+```
+#### 2.) where 使用解說
+
+```diff
+
+如同 update, delete 的 where,
+找出 working table 中滿足條件的
+row, 可以加入一連串的條件, 使用 
+and / or 串連這些條件
 
 ```
 
+#### 3.) group by 使用解說
+
+```diff
+.mode column
+.header on
+
+create table tbl(A, B);
+insert into tbl(A, B) values(1, 7);
+insert into tbl(A, B) values(3, 4);
+insert into tbl(A, B) values(3, 2);
+insert into tbl(A, B) values(6, 1);
+insert into tbl(A, B) values(1, 9);
+insert into tbl(A, B) values(3, 6);
+
+example: 把 tbl 中有相同 A 的 row 分在同一組並回傳, 
+         A 和每一組 B 的 (平均值 最小值 最大值)
+         
+select A, min(B), avg(B), max(B) from tbl group by A;
+
++ A  min(B)  avg(B)  max(B)
++ -  ------  ------  ------
++ 1  7       8.0     9     
++ 3  2       4.0     6     
++ 6  1       1.0     1     
+
+由這個範例可以看出 group by 需要結合 select_heading 使用
+這也是 select pipline 中, 把 group by 放在 select heading 
+前面的原因, 十分精妙的方法
+
+```
+
+#### 4.) select header 方法解說
+
+```diff
+
+select header 用法:
++ SELECT expression [AS column_name] [,...]
+
+as 指令可以搭配使用來命名
+
+.mode column
+.header on
+
+create table tbl(A, B);
+insert into tbl(A, B) values(1, 7);
+insert into tbl(A, B) values(2, 4);
+insert into tbl(A, B) values(3, 2);
+insert into tbl(A, B) values(4, 1);
+insert into tbl(A, B) values(5, 9);
+insert into tbl(A, B) values(6, 6);
+
+select A, B*B as [B.square] from tbl;
+! B.square 並不是合法的名字, 
+! 使用 [] 來表示 B.square 是字串
+! 因此 "B.square", `B.square`, 'B.square'
+! 也擁有一樣的效果
+
++ A  B.square
++ -  --------
++ 1  49      
++ 2  16      
++ 3  4       
++ 4  1       
++ 5  81      
++ 6  36  
+
+每個 table 都被設定具有 'rowid' 這個隱藏 column
+select rowid as id, A, B*B as `B.square` from tbl;
+
++ id  A  B.square
++ --  -  --------
++ 1   1  49      
++ 2   2  16      
++ 3   3  4       
++ 4   4  1       
++ 5   5  81      
++ 6   6  36
+
+如前所述, select header 可以搭配 aggregate function 使用
+常用的有
+
+count() : 每組各數
+min(): 每組最小值
+max(): 每組最大值
+avg(): 每組平均值
 
 
+
+.mode column
+.header on
+
+create table tbl2(A, B);
+insert into tbl2(A, B) values(1, 7);
+insert into tbl2(A, B) values(1, 4);
+insert into tbl2(A, B) values(1, 2);
+insert into tbl2(A, B) values(2, 1);
+insert into tbl2(A, B) values(2, 9);
+insert into tbl2(A, B) values(2, 6);
+
+select A as "group",
+       sum(B*B) as 'B.square', 
+       avg(B) as `B.mean`,
+       avg(B) * avg(B) as `B.mean.square`,
+       count(B) as count, 
+       (sum(B*B) - count(B) * avg(B)* avg(B) )/ (count(A) -1) as [B.VARIANCE]
+       from tbl2 group by A;
+
++ group  B.square  B.mean            B.mean.square     count  B.VARIANCE      
++ -----  --------  ----------------  ----------------  -----  ----------------
++ 1      69        4.33333333333333  18.7777777777778  3      6.33333333333334
++ 2      118       5.33333333333333  28.4444444444444  3      16.3333333333333
+
+```
+
+#### 5.) having 使用解說
+
+```diff
+
+功能上來看,
+@@ having 的功能與 where 一樣 @@
+
+它的作用主要是是在工作流上的作用,
+where 用於完整的 working table,
+having 用在運算完 group by 後
+再一次的挑選
+
+因此你也可以把 group 運算結果儲存成
+另一個 table 然後再使用 where 挑選。
+
+所以 having 必須用在 group by 
+有使用的情況下, 否則在 where 中
+多增加 and 條件即可
+
+```
+
+#### 6.) distinct 使用解說
+
+```diff
+```
 
 
 
