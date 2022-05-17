@@ -476,6 +476,7 @@ example: 對於 parts table 中資料 part_id = 454 的列,
          更新 price 為 4.54, stock = 75
 + UPDATE parts SET price = 4.25, stock = 75 WHERE part_id = 454;
 
+
 3.) delete 用法: 刪除現有 row 資料
 + DELETE FROM table_name WHERE expression;
 
@@ -488,6 +489,28 @@ example: 刪除 parts 中 part_id 大於等於 43 並且
 
 example: 刪除所有 row
 + DELETE FROM parts WHERE 1; 
+
+
+ 4.) select 用法: sqlite 中最複雜的指令
++ SELECT output_list FROM input_table WHERE row_filter;
+
+範例:
+
+.mode column
+.header on
+
+CREATE TABLE tbl ( a, b, c, id INTEGER PRIMARY KEY );
+INSERT INTO tbl ( a, b, c ) VALUES ( 10, 10, 10 );
+INSERT INTO tbl ( a, b, c ) VALUES ( 11, 15, 20 );
+INSERT INTO tbl ( a, b, c ) VALUES ( 12, 20, 30 );
+
+
+example: 全選, * 代表全部 column
+select * from tbl
+
+
+example: 取出所有 row 的 a, b column, 
+         並以 b, a 排序
 
 ```
 
