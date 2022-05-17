@@ -250,13 +250,13 @@ sqlite 沒有這一個部分
 
 the basis : create table
 
-create table example_table (
-    column_1_name  colum_1_type,
-    column_2_name  colum_2_type,
-    column_3_name  colum_3_type,
-    column_4_name  colum_4_type
-    -- ...
-);
++ create table example_table (
++    column_1_name  colum_1_type,
++    column_2_name  colum_2_type,
++    column_3_name  colum_3_type,
++    column_4_name  colum_4_type
++     ...
++ );
 
 ! 當 column_type 定義好後, 往後新增的資料
 ! 都需要符合當出定義時的型態, 否則會出現錯誤
@@ -318,7 +318,7 @@ float 型態儲存, 若轉換失敗, 便以 text 儲存
 該欄不限制資型態, 
 所有資料都會以輸入時的型態儲存
 
-SQLite 欄資料型態運作 Rule
+@@ SQLite 欄資料型態運作 Rule @@
 
 1.) 若創造 data object 時, 沒有給定 column_type
     則自動設定 None 作為該欄 column_type
@@ -338,10 +338,171 @@ SQLite 欄資料型態運作 Rule
 6. ) 如果字串沒有找到符合的 column_type, 會設定該欄
     為 numeric column_type
 
+```
+> SQLite 添加額外欄限制
 
+```diff
 
++ create table example_table (
++    column_1_name  colum_1_type column_1_constraint,
++    column_2_name  colum_2_type column_2_constraint,
++    column_3_name  colum_3_type column_3_constraint,
++   column_4_name  colum_4_type column_4_constraint
++    ...
++ );
+
++ example
+
+CREATE TABLE parts
+(
+    part_id INTEGER PRIMARY KEY,
+    stock INTEGER DEFAULT 0 NOT NULL,
+    desc TEXT CHECK( desc != '' ) -- empty strings not allowed
+);
 
 ```
+
+```diff
+
+1.) 設定排序規則:  "collate" "排序規則的名字" 
+
+2.) 設定預設值 :   "default" "預設值",
+!   事實上各欄的預設值為 NULL
+
+3.) 設定紀錄時間格式 :
+    a.) current_date
+    b.) current_time
+    c.) current_timestamp
+    
+4.) 設定不可為空 : not NULL
+
+5.) 設定每一列值不可相同 : unique
+
+6.) 設定規則 : check()
+    如字串欄 "user_name" 不允許值 "坂井泉水", check( user_name != "坂井泉水" )
+
+7.) primary keys 的設定: primary key
+!   每個 table 只允許 1 個 primary key
+!   integer primary key -> 該欄會被認為是 rowid
+
+有時候會有設定 primary key 的但是值是重複的困擾
+可以用 cross column primary key 解決
+結合 room_number 和 building_number 就是一個 uniuqe 的值
+
+CREATE TABLE rooms
++ (
++    room_number INTEGER NOT NULL,
++    building_number INTEGER NOT NULL,
++    [...,]
++ 
++    PRIMARY KEY( room_number, building_number )
++ );
+
+
+8.) 可以以現有的 table 為範本來創造 table
++ CREATE [TEMP] TABLE table_name AS SELECT query_statement;
+
+9.) 修改欄名或增加新欄 :  "alter" "column_name" ...
+!   alter 不允許刪除欄
+
+
+10.) 刪除現有 table : "drop table" "table_name"
+
+
+11.) 建立一個只允許讀取的 table
+CREATE [TEMP] VIEW view_name AS SELECT query_statement
+
+12.) 刪除現有的 view table : "drop view" "view_table_name"
+
+13.) indexes 使用
+CREATE [UNIQUE] INDEX index_name ON table_name ( column_name [, ...] );
+DROP INDEX index_name;
+
+```
+
+[step 4, DML](#top)
+
+```diff
+@@ Data Manipulation Language @@
+
+@@ DML @@
+
+DML 是指將資料存入或取出的指令, 當你使用 DDL 指令創造
+Table 之後, 便是使用 DDL 的時機
+
+@@ DML 種類 @@
+
+1.) update 種類
+
+指令有 update, insert, delete
++ update: 修改現有 row 資料
++ insert: 增加新 row
++ delete: 刪除現有 row
+
+
+2.) query 種類
+指令有 select
+
+太複雜了, 所以後面討論
+
+```
+
+```diff
+
+1.) insert 用法: 在某一個 table 中新增資料
++ INSERT INTO table_name (column_name [, ...]) VALUES (new_value [, ...]);
+
+example: 在 parts 中新增一列, 依據 name, stock, status 順序給值
++ INSERT INTO parts ( name, stock, status ) VALUES ( 'Widget', 17, 'IN STOCK' );
+
+column_name_list 是不一定要放的, 但若是沒放的話
+便是依照 column 的順序擺放資料, 同時這代表你無法
+使用預設值功能, 包括 integer primary key 欄, 
+所以建議還是要加入明確的 column_name_list
+
+
+若一次要新增大量筆數資料, 唯一得方法
++ INSERT INTO table_name (column_name, [...]) SELECT query_statement;
+
+若輸入的資料有重複, 想要取代舊有資料,
+可以用 replace 指令
++ INSERT OR REPLACE ...
+
+
+2.) update 用法: 更新現有 row 資料
++ UPDATE table_name SET column_name=new_value [, ...] WHERE expression
+
+example: 對於 parts table 中資料 part_id = 454 的列,
+         更新 price 為 4.54, stock = 75
++ UPDATE parts SET price = 4.25, stock = 75 WHERE part_id = 454;
+
+3.) delete 用法: 刪除現有 row 資料
++ DELETE FROM table_name WHERE expression;
+
+example: 刪除 parts 中 part_id 為 385 的列
++ DELETE FROM parts WHERE part_id = 385;
+
+example: 刪除 parts 中 part_id 大於等於 43 並且 
+         part_id 小於等於 246 的列們
++ DELETE FROM parts WHERE part_id >= 43 AND part_id <= 246;
+
+example: 刪除所有 row
++ DELETE FROM parts WHERE 1; 
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
