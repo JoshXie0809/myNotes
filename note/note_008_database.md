@@ -628,8 +628,142 @@ from 可以有數個資料 tables
 
 join 有數個種類: cross join, inner join, outer join
 
-@@ cross join @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.mode column
+.header on
+create table t1(A, B);
+create table t2(C, D);
+
+insert into t1 (A, B) values (1, "a");
+insert into t1 (A, B) values (2, "b");
+insert into t1 (A, B) values (3, "c");
+insert into t1 (A, B) values (4, "d");
+
+insert into t2 (C, D) values (10, 1.2);
+insert into t2 (C, D) values (20, 6.4);
+
+select * from t1;
+
++ A  B
++ -  -
++ 1  a
++ 2  b
++ 3  c
++ 4  d
+
+select * from t2;
+
++ C   D  
++ --  ---
++ 10  1.2
++ 20  6.4
+
+@@ cross join @@
+t1: 有 m rows, x columns
+t2: 有 n rows, y columns
+
+將會有 working table:
+m*n row, x+y columns
+
+select * from t1 cross join t2;
+
++ A  B  C   D  
++ -  -  --  ---
++ 1  a  10  1.2
++ 1  a  20  6.4
++ 2  b  10  1.2
++ 2  b  20  6.4
++ 3  c  10  1.2
++ 3  c  20  6.4
++ 4  d  10  1.2
++ 4  d  20  6.4
+
+! t1 第一個 rows 要將 t2 所有 rows 複製一遍
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.mode column
+.header on
+create table t1(A, B);
+create table t2(C, D);
+
+insert into t1 (A, B) values (3, "a");
+insert into t1 (A, B) values (1, "f");
+insert into t1 (A, B) values (1, "q");
+insert into t1 (A, B) values (4, "e");
+insert into t1 (A, B) values (9, "r");
+
+insert into t2 (C, D) values (1, 7.4);
+insert into t2 (C, D) values (3, 2.3);
+insert into t2 (C, D) values (9, 8.6);
+
+
+@@ inner join @@
+select ... from t1 join t2 on conditional_expression ...
+會依照條件配對 row 並合併 column
+
+example: 如果 A = C
+select * from t1 join t2 on A = C;
+從 t1 row 1 開始, 比對 t2 所有 row 符合 A column = C column,
+就在 working table 新增這一個 row
+
++ A  B  C  D  
++ -  -  -  ---
++ 3  a  3  2.3
++ 1  f  1  7.4
++ 1  q  1  7.4
++ 9  r  9  8.6
+
+example: 如果 1
+select * from t1 join t2 on 1;
+因為一直是 true, 效果同 cross join
+
++ A  B  C  D  
++ -  -  -  ---
++ 3  a  1  7.4
++ 3  a  3  2.3
++ 3  a  9  8.6
++ 1  f  1  7.4
++ 1  f  3  2.3
++ 1  f  9  8.6
++ 1  q  1  7.4
++ 1  q  3  2.3
++ 1  q  9  8.6
++ 4  e  1  7.4
++ 4  e  3  2.3
++ 4  e  9  8.6
++ 9  r  1  7.4
++ 9  r  3  2.3
++ 9  r  9  8.6
+
+! 若兩個 table 間有同 columns 想要以此為 inner join 的標準
+! 使用 select ... from t1 join t2 using( col1, ... )
+! 但是 using( col1, ... ) 慢慢指定太慢啦 ~~
+! 可以使用 select ... from t1 natural join t2 ...
+
+
+@@ outer join @@
+outer join 是 inner join 的擴充
+@@ SQL 標準 @@ 定義了 left, right, full outer join
+但是 SQLite 僅提供 left outer join 方法
+
+在上面 inner join A = C 的範例我們可以注意到,
+有一個 t1 row 有 A = 4, 但是因為它沒有在 t2
+找到任一 row 符合 A = C 這個條件, 因此最終 result
+是被刪除的, 但是若使用 left outer join 他會把
+C, D 設為 NULL 存到 result table
+
+select * from t1 left outer join t2 on A = C;
+
+# A  B  C  D  
+# -  -  -  ---
+# 3  a  3  2.3
+# 1  f  1  7.4
+# 1  q  1  7.4
+# 4  e        
+# 9  r  9  8.6
 
 ```
 
