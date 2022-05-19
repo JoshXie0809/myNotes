@@ -14,18 +14,17 @@ library(Rcpp)
 cpptxt <- "
     int winner(int player0, int player1, double p) {
         // when playerx == 0, xth player is ruined
-        while( player0 > 0 && player1 > 0 ) {
+        int total = player0 + player1;
+        while( player0 > 0 && player0 < total ) {
             if( runif(1)[0] <= p ) {
                 // player0 win
                 player0 += 1; 
-                player1 -= 1;
             }else{
                 // player1 win
-                player1 += 1; 
-                player0 -= 1;
+                player0 -= 1; 
             }
         }
-        if(player0 > player1) return 0;
+        if(player0 > 0) return 0;
         return 1;
     }    
 "
