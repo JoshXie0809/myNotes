@@ -9,7 +9,7 @@
 library(Rcpp);
 
 cpptxt <- "
-    int Winner( int playerNum, double succeedRate) {
+    int winner( int playerNum, double succeedRate) {
         while(1) {
             for( int p = 0; p < playerNum; p++ )
                 // runif(1) return a vector
