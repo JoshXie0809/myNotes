@@ -28,11 +28,17 @@ simu <- function(n, a = NULL, b = NULL, B = 1e4, succeedRate = 0.1) {
     });
 } 
 
-# 2 player with succeedRate 0.5
+
+# do simulation 
+# -----------------------------------------------------------
+
+# url <- "https://raw.githubusercontent.com/JoshXie0809/myNotes/main/note/note_009_Huygens%E2%80%99s_second_problem.R"
+# source(url)
+
+## 2 player with succeedRate 0.5
 # table(simu(2, succeedRate = .5))
 
-
-# 4 player with 2 white balls, 5 black balls
+## 4 player with 2 white balls, 5 black balls
 # table(simu(4, a = 2, b = 5))
 
 
