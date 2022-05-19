@@ -21,6 +21,7 @@ cpptxt <- '
             trial++;
         }
         return trial;
+     }
 '
 cppFunction(cpptxt)
 
