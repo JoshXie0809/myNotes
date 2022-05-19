@@ -44,4 +44,37 @@ simu <- function(n, a = NULL, b = NULL, B = 1e4, succeedRate = 0.1) {
 
 
 
+# theory
+# ----------------------------------------------------------
+# suppose beta = b / (a+b)
+# the first player win rate is (1 - beta ) / (1 - beta^n) 
+# the nth player win rate is  beta^(n-1) * ( (1 - beta ) / (1 - beta^n) )
+
+# set.seed(1)
+# prop.table(table(simu(3, a = 1, b = 2, B = 1e5)))
+
+#       0       1       2 
+# 0.47614 0.31284 0.21102
+
+# beta <- 2 / 3
+# (1 - beta) / (1 - beta^3) * beta^(0:2)
+# 0.4736842 0.3157895 0.2105263
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
