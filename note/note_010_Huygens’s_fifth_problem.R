@@ -51,6 +51,31 @@ simu <- function(player0, player1, prob, B = 1e4) {
 
 
 
+# theory
+# let 
+# n = [a] + [b], the total coins
+# p = probability player0 win
+# 0 < p < 1, p!= 0.5
+
+# R_x = the probability player0 now has x coins, 
+#       and finally player0 win
+# R_0 = 0, R_n = 1
+
+# let A = (1-p) / p
+# R_x = (1 - A^x) / (1 - A^n)
+
+
+# from simu
+
+# n <- 3 + 3
+# p <- .4
+# A <- (1-p) / p
+# R_3 <- (1-A^3) / (1-A^n)
+# R_3
+# 0.2285714
+
+
+
 
 
 
