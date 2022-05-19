@@ -12,7 +12,7 @@ cpptxt <- "
     int Winner( int playerNum, double succeedRate) {
         while(1) {
             for( int p = 0; p < playerNum; p++ )
-                # runif(1) return a vector
+                // runif(1) return a vector
                 if( runif(1)[0] <= succeedRate)
                     return p;
         }
