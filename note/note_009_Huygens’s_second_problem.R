@@ -1,0 +1,2 @@
+# use Rcpp
+library(Rcpp)
