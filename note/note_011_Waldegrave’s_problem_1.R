@@ -10,29 +10,22 @@
 library(Rcpp)
 
 cpptxt <- '
-    NumericVector allOne( int oneNum, double prob, int B ) {
-        NumericVector res(B);
-        int count, trial;
-
-        for(int i = 0; i < B; i++) {
-            count = 0; trial = 0;
-            while( count < oneNum ) {
-                if(runif(1)[0] <= prob ) {
-                        count++;
-                } else {
-                        count = 0;
-                }
-                trial++;
+     int allOne( int oneNum, double prob) {
+        int count = 0, trial = 0;
+        while( count < oneNum ) {
+            if(runif(1)[0] <= prob ) {
+                count++;
+            } else {
+                count = 0;
             }
-            res[i] = trial;
+            trial++;
         }
-        return res;
-    }
+        return trial;
 '
 cppFunction(cpptxt)
 
-simu <- function(oneNum, prob, B = 1e4)  allOne(oneNum, prob, B)
-
+simu <- function(oneNum, prob, B = 1e4)  
+    replicate(B, allOne(oneNum, prob))
 
 # to have "11", p = 0.5
 # mean(simu(2, .5))
