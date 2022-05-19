@@ -10,3 +10,4 @@
 *  [go](https://github.com/JoshXie0809/myNotes/blob/main/note/note_006_financial_computing_mid1_ch4.md) _note 6 : 2022 financial computing mid1 - ch4_ 
 *  [go](https://github.com/JoshXie0809/myNotes/tree/main/note/note_007_r_base) _note 7 : using r base function_
 *  [go](https://github.com/JoshXie0809/myNotes/blob/main/note/note_008_database.md) _note 8 : using DBI with SQLite_
+*  [go](https://github.com/JoshXie0809/myNotes/blob/main/note/note_009_Huygens%E2%80%99s_second_problem.R) _note 9 : Huygens's_second_problem_
