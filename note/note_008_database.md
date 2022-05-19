@@ -921,8 +921,40 @@ having 用在運算完 group by 後
 #### 6.) distinct 使用解說
 
 ```diff
+
+@@ distinct @@
+會刪除 working table 中, 重複的 row
+重複是指每一個 column 的值都相同,
+他也是少數會判斷 NULL = NULL is True 
+的例子之一
+
+```
+#### 7.) order by 使用解說
+
+```diff
+
+ORDER BY expression [COLLATE collation_name] [ASC|DESC] [,...]
+
+expression 通常是指某個 column
+sqlite 會比較每個 row 的指定 column, 
+來作為比較排序的基準
+
+collation_name : text 資料比較的方法
+asc / desc : 升序 or 降序
+
+預設使用 asc
+
+collate 方法有
+binary : row data 比較 
+nocase : 將字串轉為小寫, 再排序
+rtrim: ??? 看不懂
 ```
 
+### 8.) limit and offset 使用解說
+
+```diff
+
+```
 
 
 
