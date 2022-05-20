@@ -14,10 +14,10 @@ my.pairs <- function (x, labels, panel = points, ..., lower.panel = panel,
     if (side%%2L == 0L && yl[i]) 
       xpd <- FALSE
     if (side%%2L == 1L) 
-      Axis(x, side = side, xpd = xpd, ...)
-    else Axis(y, side = side, xpd = xpd, ...)
+      Axis(x, side = side, xpd = xpd, las = 1, ...)
+    else Axis(y, side = side, xpd = xpd, las = 1, ...)
   }
-  localPlot <- function(..., main, oma, font.main, cex.main, las = 1) plot(...)
+  localPlot <- function(..., main, oma, font.main, cex.main) plot(...)
   localLowerPanel <- function(..., main, oma, font.main, cex.main) lower.panel(...)
   localUpperPanel <- function(..., main, oma, font.main, cex.main) upper.panel(...)
   localDiagPanel <- function(..., main, oma, font.main, cex.main) diag.panel(...)
