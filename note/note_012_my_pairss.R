@@ -94,7 +94,7 @@ my.pairs <- function (x, labels, panel = points, ..., lower.panel = panel,
                    type = "n", ..., log = l, xlim = xlim[j,i,])
          if (!is.null(xlim) & !is.null(ylim))
          localPlot(x[, j], x[, i], xlab = "", ylab = "", axes = FALSE, 
-                   type = "n", ..., log = l, xlim = xlim[j,i,], ylim=ylim[j,i,])
+                   type = "n", ..., log = l, xlim = xlim[j,i,], ylim=ylim[j,i,], las = 1)
 
          if (i == j || (i < j && has.lower) || (i > j && has.upper)) {
            box()
