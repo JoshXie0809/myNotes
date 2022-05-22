@@ -13,3 +13,4 @@
 *  [go](https://github.com/JoshXie0809/myNotes/blob/main/note/note_009_Huygens%E2%80%99s_second_problem.R) _note 9 : Huygens's_second_problem_
 *  [go](https://github.com/JoshXie0809/myNotes/blob/main/note/note_010_Huygens%E2%80%99s_fifth_problem.R) _note 10 : Huygens's_fifth_problem_
 *  [go](https://github.com/JoshXie0809/myNotes/blob/main/note/note_011_Waldegrave%E2%80%99s_problem_1.R) _note 11 : Waldegrave’s problem I_ 
+*  [go](https://github.com/JoshXie0809/myNotes/blob/main/note/note_012_my_pairss.R) _note 12 : my pairs function_
