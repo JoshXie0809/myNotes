@@ -218,15 +218,15 @@ example
 ```cpp
 #include <iostream>
 #include <string> // declaration of class "string"
-using namespce std;
+using namespace std;
 
 int main() {
     // Defines four strings:
     string prompt("What is your name? > "),
            name,
-           line(40, "-"), // "-" x 40 = 
+           line(40, '-'), // "-" x 40 = 
                           // "--....--", length 40
-            total = "Hello, ";
+            total = " Hello, ";
             
     cout << prompt;        // Request for input.
     getline(cin, name);    // Inputs a name in one line
