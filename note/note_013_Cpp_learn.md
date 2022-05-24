@@ -349,6 +349,7 @@ void line(void) {
 ```diff
 @@ Manipulators formatting integers @@
 ```
+
 Manipulator|Effects
 -:|:-
 oct|八進位制
@@ -360,17 +361,82 @@ uppercase|十六進位制英文大寫
 nouppercase|十六進位制英文小寫(預設)
 
 
+```cpp
 
+// Enters a character and outputs its
+// octal, decimal, and hexadecimal code.
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+int main()
+{
+     int number ;
+     // Declaration of cin, cout
+     // For manipulators being called
+     // with arguments.
+     cout << "the number is: ";
+     cin >> number;
+     cout << "octal\t\tdecimal\t\thexadecimal\n";
+     cout << oct << number << "\t\t" 
+          << dec << number << "\t\t"
+          << hex << number << endl;
+     return 0;
+}
 
+```
 
+```diff
+@@ Manipulators formatting floating-point numbers @@
+```
 
+Manipulator|Effects
+-:|:-
+showpoint| cout 1`.` 這樣的數值
+noshowpoint| 入無小數後數值則省略(預設)
+fixed|output in fixed point notation, 1`.0000` 小數點後幾位由設定的 precision 決定
+scientific|output in scientific notation
+int precision( int );|set float precision
+int precision () const; | return used precision
 
+example
 
+```cpp
 
+#include <iostream>
+using namespace std;
 
+int main() {
+    double x = 12.0;
+    cout.precision(3);
 
+    cout << "default     : " << x << endl;
+    cout << "showpoint   : " << showpoint << x << endl;
+    cout << "noshowpoint : " << noshowpoint << x << endl; 
+    cout << "fixed       : " << fixed << x << endl;
+    cout << "scientific  : " << scientific << x << endl;
+    cout << "the precision is " << cout.precision() << endl;
+    
+    return 0;
+}
 
+// output
 
+// default     : 12
+// showpoint   : 12.0
+// noshowpoint : 12
+// fixed       : 12.000
+// scientific  : 1.200e+01
+// the precision is 3
+
+```
+
+```diff
+@@ Element functions for output in fields @@
+```
+
+Manipulator|Effects
+-:|:-
 
 
 
