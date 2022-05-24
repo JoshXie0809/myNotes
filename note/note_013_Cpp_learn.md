@@ -585,6 +585,79 @@ int main() {
 
 ### [Operators for Fundamental Types](#top)
 
+```diff
+@@ Binary operator and operands @@
+
+剛好需要兩個參數的 function
+
+a + b,
+
+`+` is a function
+double `+`( double a, double b ) # return sum
+
+other : +, - *, /, %(remainde)
+
+```
+
+a|+|b
+:-:|:-:|:-:
+`Left` operand|operator|`Right` operand
+
+
+
+```diff
+@@ Unary operator and operands @@
+需要一個參數的 function
+```
+
+Operator | Significance
+|:--:|:--|
+ `+` | 給定正號
+ `-` | 給定負號
+ `++`| 把參數值 + 1, 並指定回參數
+ `--` | 把參數值 - 1, 並指定回參數
+
+優先度|Operators
+:-:|:-
+1| `++`, `--` (postfix)
+2| `++`, `--` (prefix), `+`, `-` (sign)
+3| `*`, `/`, `%`
+4| `+`, `-`
+
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i(2);
+    cout << i++ << endl; // output: 2
+    cout << i << endl; //output: 3
+    cout << ++i << endl; //output: 4
+    cout << i << endl; // output: 4
+
+    cout << 1 + i++ << endl; // output: 5
+    cout << i << endl; // output : 5
+
+    cout << 1 + ++i << endl; // output : 7
+    cout << i << endl; // output : 6
+    return 0;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
