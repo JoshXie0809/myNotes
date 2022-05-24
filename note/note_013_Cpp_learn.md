@@ -214,7 +214,9 @@ c 的遺產, cpp 能很好的使用
 ```
 
 **`using class string`**
+
 example
+
 ```cpp
 #include <iostream>
 #include <string> // declaration of class "string"
@@ -245,9 +247,104 @@ int main() {
 }
 
 ```
+```diff
 
+string 指定內容方法
+string s = "...."; or
+string s = ("....")
 
+! 注意
+string line(40, '-'); 是用 [''], 非 [""]
 
+!string class' capabilities
+s.length(); 取得字串長度
+
+```
+
+---
+
+### [Input and Output with Streams](#top)
+
+如何使用 iostream
+
+```diff
+
+cin : object of class istream to control standard input
+cout : object of class ostream to control standard output
+cerr : object of class ostream to control unbuffered error output
+clog : object of class ostream to control buffered error output
+
+istream class is used to reading streams
+ostream class is used to writing streams
+
+! the operator ">>" is defined in istream
+! the operator "<<" is defined in ostream
+
+! iostream inherent istream and ostream,
+! so has both library functions.
+
+```
+
+```cpp
+#include <iostream>
+#include<string>
+using namespace std;
+
+void line(void);
+
+int main() {
+    
+    cout <<"cout << showpos << 123 << endl; "<< endl;
+    line();
+    cout << showpos << 123 << endl;
+    // +123
+    line();
+
+    cout <<"cout << 22 << endl; "<< endl;
+    line();
+    cout << 22 << endl;
+    // +22
+    line();
+    
+    cout <<"cout << noshowpos << 123 << endl; "<< endl;
+    line();
+    cout << noshowpos << 123 << endl;
+    // 123
+    
+    line();
+    
+    cout <<"cout << 22 << endl; "<< endl;
+    line();
+    cout << 22 << endl;
+    // 22
+    
+    line();
+    
+    cout << "cout.setf(ios::showpos);" << endl
+         << "cout << 125 << endl;" << endl;
+    
+    line();
+    cout.setf(ios::showpos);
+    cout << 125 << endl;
+    //+125
+    line();
+    
+    cout << "cout.unsetf(ios::showpos);" << endl
+         << "cout << 125 << endl;" << endl;
+    line();
+    cout.unsetf(ios::showpos);
+    cout << 125 << endl;
+    // 125
+    
+    return 0;
+
+}
+
+void line(void) {
+    string l(40, '-');
+    cout << l << endl;
+}
+```
 
 
 
