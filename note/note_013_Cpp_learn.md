@@ -435,17 +435,21 @@ int main() {
 @@ Element functions for output in fields @@
 ```
 
+Method|Effects
+-:|:-
+int width( ) const; | Returns the minimum field width used
+int width( int n ); | Sets the minimum field width to n
+int fill( ) const;  | Returns the fill character used
+int fill( int ch ); | Sets the fill character to ch
+
+
 Manipulator|Effects
 -:|:-
-
-
-
-
-
-
-
-
-
+setw(int n)|Sets the minimum field width to n
+setfill(int ch)|Sets the fill character to ch
+left|Left-aligns output in fields
+right|Right-aligns output in fields
+internal|Left-aligns output of the sign and right-aligns output of the numeric value
 
 
 
