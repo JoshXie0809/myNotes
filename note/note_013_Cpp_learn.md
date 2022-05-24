@@ -346,7 +346,18 @@ void line(void) {
 }
 ```
 
-
+```diff
+@@ Manipulators formatting integers @@
+```
+Manipulator|Effects
+-:|:-
+oct|八進位制
+hex|十六進位制
+dec|十進位制(預設)
+showpos|正的數值型資料前面加上"+"
+noshowpos|正的數值型資料前面不加上"+"(預設)
+uppercase|十六進位制英文大寫
+nouppercase|十六進位制英文小寫(預設)
 
 
 
