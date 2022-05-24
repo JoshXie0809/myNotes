@@ -393,7 +393,7 @@ int main()
 Manipulator|Effects
 -:|:-
 showpoint| cout 1`.` 這樣的數值
-noshowpoint| 入無小數後數值則省略(預設)
+noshowpoint| 若無小數後數值則省略(預設)
 fixed|output in fixed point notation, 1`.0000` 小數點後幾位由設定的 precision 決定
 scientific|output in scientific notation
 int precision( int );|set float precision
@@ -451,9 +451,95 @@ left|Left-aligns output in fields
 right|Right-aligns output in fields
 internal|Left-aligns output of the sign and right-aligns output of the numeric value
 
+examples
 
+```cpp
+#include <iostream>
+#include <iomanip>
+// setw & setfill declaration in iomanip
+using namespace std;
+void line (void);
 
+int main() {
+    line();
+    // example 1:
+    cout << "|" << setw(6) << "X|" << endl;
+    // |    X|
+    // fields with 6 spaces
+    line();
 
+    // example 2:
+    cout << fixed << setprecision(3) << setw(10)
+         << 123.4 << endl
+         << 1234567890 << endl;        
+    //    123.400
+    // 1234567890
+    line();
+
+    // example 3:
+    cout << setfill('>') << setw(10) << setprecision(2) 
+         << 123.4567 << endl;
+    // >>>>123.46
+    line();
+
+    // example 4:
+    cout << setfill('0') << setw(10) << setprecision(2) 
+         << internal << 123.4 << endl
+         << setfill('0') << setw(10) << setprecision(2) 
+         << internal << -123.4 << endl;
+    // 0000123.40
+    // -000123.40
+    line();
+
+    return 0;
+
+}
+
+void line(void) {
+    cout << "------------------------------" << endl;
+}
+```
+
+sample
+```cpp
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main() {
+    string label;
+    double price;
+
+    cout << "\nPlease Enter an article label : " ;
+    
+    // Input the label (15 characters maximum):
+    cin >> setw(16) ;
+    cin >> label;
+    cin.sync(); // Clears the buffer and resets
+    cin.clear(); // any error flags that may be set
+
+    cout << "\nEnter the price of the article: ";
+    cin >> price;
+    // Controlling output:
+    cout << setprecision(6)
+         << "\nArticle:"
+         << "\n Label: " << label
+         << "\n Price: " << price << endl;
+    
+    return 0;
+}
+```
+
+```diff
+@@ Note @@
+
+The input buffer is cleared and error flags are reset 
+by calling the sync() and clear() methods. This ensures 
+that the program will wait for new input for the price, 
+even if more than 15 characters have been entered for 
+the label.
+```
 
 
 
