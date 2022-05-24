@@ -397,7 +397,7 @@ noshowpoint| 若無小數後數值則省略(預設)
 fixed|output in fixed point notation, 1`.0000` 小數點後幾位由設定的 precision 決定
 scientific|output in scientific notation
 int precision( int );|set float precision
-int precision () const; | return used precision
+int precision( ) const; | return used precision
 
 example
 
@@ -541,6 +541,49 @@ even if more than 15 characters have been entered for
 the label.
 ```
 
+```diff
+@@ Input Fields @@
+
+">>" 是定義在 <istream> 中
+會考慮 number base && field width flags
+
+number base : oct(8), dec(10), hex(16)
+field width flags : setw(...)
+
+```
+
+sample
+
+```cpp
+// Reads a text with the operator >>
+// and the function getline().
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+string header =
+" --- Demonstrates Unformatted Input ---";
+
+int main() {
+    string word, rest;
+    cout << header 
+         << "\n\nPress <Enter> to go on\n\n";
+    
+    cin.get(); // get a line input without store
+
+    cout << "Please input a sentence with several words" << endl
+         << "End with <!> and <Enter>." << endl;
+    cin >> word; 
+    getline(cin, rest, '!');
+    
+    cout << "\nThe first word: " << word
+         << "\nRemaining text: " << rest << endl;
+    return 0;
+}
+```
+
+### [Operators for Fundamental Types](#top)
 
 
 
