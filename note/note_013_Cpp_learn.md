@@ -625,11 +625,25 @@ Operator | Significance
 4| `+`, `-`
 
 
+```difff
+@@ ++i @@
+
+i is incremented first and the new value of i is then applied,
+
+
+@@ i++ @@ 
+
+the original value of i is applied before i is incremented.
+
+```
+
 ```cpp
+
 #include <iostream>
 using namespace std;
 
 int main() {
+
     int i(2);
     cout << i++ << endl; // output: 2
     cout << i << endl; //output: 3
@@ -643,12 +657,26 @@ int main() {
     cout << i << endl; // output : 6
     return 0;
 }
+
 ```
 
 
+```diff
+@@ The relational operators @@
+邏輯運算優先度一定低於數學運算
+```
+|優先度|Operator
+| :-:|:-
+| 1|  先前部分的數學運算式
+| 2| `<`, `<=`, `>=`, `>` 
+| 3| `==`, `!=`
+| 4|assignment operator
 
+### [control flow](#top)
 
-
+* loop with `while`, `do-while`, `for`
+* selections with `if-else`, `switch`
+* jumps with `goto`, `continue`, `break`
 
 
 
