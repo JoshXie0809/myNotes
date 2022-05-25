@@ -747,6 +747,36 @@ void line (void) {
     cout << "--------------------------" << endl;
 }
 
+#### goto example
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int count = 0;
+
+iIs0:
+    cout << "i is 0\n";
+
+iIs1:
+    cout << "i is 1\n";
+
+
+    for(int i = 0; i < 3; i++) {
+        if(count > 0) goto end;
+        ++count;
+        if( i == 0 ) goto iIs0; 
+        if( i == 1 ) goto iIs1;
+    }
+end:
+    cout << "count is " << count << endl;
+    cout << "press <Enter> to end" << endl;
+    cin.get();
+    return 0;
+}
+```
+
 ```
 
 
