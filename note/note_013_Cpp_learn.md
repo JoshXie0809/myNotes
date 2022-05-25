@@ -679,8 +679,75 @@ int main() {
 * jumps with `goto`, `continue`, `break`
 
 
+```cpp
+#include <iostream>
+using namespace std;
+
+void line( void );
+
+int main() {
+    // comma operator
+    // a*b is assign to x
+    line();
+    int x, a, b;
+    x = (a = 12, b = 22, a*b );
+    cout << x << endl;
+    // output is 264
+    line();
+
+    // conditional operator
+    // [ logical ? true : false]
+    // a is 12, b is 22
+    x = a > b ? 1 : 0;
+    cout << x << endl;
+    // out put is 0;
+    line();
+
+    // use like if else
+    a > b ? cout << 1 << endl : cout << 2 << endl;
+    line();
+
+    // switch
+    int command;
+    cout << "command from 1 to 4: ";
+    cin >> command;
+    switch (command) {
+        case 1:
+        case 2:
+            cout << "command <= 2\n";
+            break;
+        case 3:
+        case 4:
+            cout << "command > 2, is 3 or 4\n";
+            break;
+        default:
+            cout << '\a' << flush << "command not in 1~4\n";
+            break;
+    } 
+    line();
 
 
+    x = 0;
+    for(int i = 0; i < 100; i++) {
+        if( i > 50 ) goto iLarger50;
+        x = i;
+    }
+    // this part is not print
+    cout << "x is before label" << endl;
+
+iLarger50: // in for-loop i > 50, jum here 
+    cout << "i is larger than 50" << endl;
+    cout << "x is " << x << endl;
+    line();
+
+    return 0;
+}
+
+void line (void) {
+    cout << "--------------------------" << endl;
+}
+
+```
 
 
 
