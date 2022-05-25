@@ -748,6 +748,7 @@ void line (void) {
 }
 
 #### goto example
+
 ```cpp
 #include <iostream>
 #include <string>
@@ -777,7 +778,6 @@ end:
 }
 ```
 
-```
 
 
 
