@@ -889,6 +889,27 @@ int main() {
 ```
 
 
+### [string class](#top)
+
+```diff
+@@ define and assign string @@
+創造 string type variable
+
+string message = "Good morning!";
+['G', 'o', 'o', ..... ,  'g', '!']
+length: 13
+
+@@ initialize @@
+
+初始化, 即宣告變數,需要給予變數名, 
+但不只派需要用到多少空間, string
+會隨著變數儲存的字串不同, 自動調整
+所需要的空間這是改善 C 字串容易犯
+錯的問題
+
+如果變數初始化時, 沒有給值, 那麼
+
+```
 
 
 
