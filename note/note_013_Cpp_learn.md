@@ -817,6 +817,103 @@ int main() {
 }
 ```
 
+```diff
+@@ WORKING WITH THE #define DIRECTIVE @@
+
+in file prog.h :
+  
+  Classes
+  and other type
+  definitions
+  
+  prototype 
+  of global function
+ 
+
+in Source file1
+  #include "proj.h"
+
+in Source file2
+  #include "proj.h"
+
+.....
+
+in Source filen
+  #include "proj.h"
+
+! 要使用 #define 定義 macro
+! 可以隨意放置 #define 地方
+! 但是要在第一次使用前 #define
+
+但是還是推薦放在最 source file
+前面, 方便管理
+
+如果你要在多個文件中使用同個 macros
+可以使用 .h 來統一管理 macros
+
+上述得例子 macro 有點像 function,
+但是最大的不同在於, macro　呼叫時
+不會創造新空間處理, 所以速度會快點
+
+```
+
+```diff
+@@ Multiple inclusions of header files @@
+source file #include 多個 .h
+
+in layer [1] header file: basis.h
+#ifndefine_BASIS_H // if not define
+#define_BASIS_H
+
+// contect
+
+#endif
+
+in layer [2] heafer file: statist.h
+#include <iostream>
+#include "basis.h"
+
+in layer [2] heafer file: graph.h
+#include <iostream>
+#include "basis.h"
+
+in layer [3] source file: application.cpp
+#include "statist.h"
+#inclide "graph.h"
+
+int main() {
+  // ....
+  return 0;
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
