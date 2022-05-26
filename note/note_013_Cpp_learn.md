@@ -777,10 +777,45 @@ end:
     cin.get();
     return 0;
 }
+
 ```
+### [Sybolic Constants and Macros](#top)
 
 
+```diff
+@@ a @@
+```
+example
 
+```cpp
+#include <iostream>
+using namespace std;
+
+
+// define a macros called SQUARE
+// using parameter [a]
+#define SQUARE(a) ( (a) * (a) )
+#define SQUARE2(a) ( a * a )
+
+// when using
+// example :
+// z = SQUARE(x+1);
+// z = (x+1) * (x+1);
+
+int main() {
+    int z, x = 9;
+    cout << "using macro SQUARE( x+1 ) : " 
+         << SQUARE(x+1) << endl;
+    // output : using macro SQUARE( x+1 ) : 100
+    
+    cout << "using macro SQUARE2( x+1 ) : " 
+         << SQUARE2(x+1) << endl;
+    // using macro SQUARE2( x+1 ) : 19
+    // 9 + 1 * 9 + 1 = 19
+    
+    return 0;
+}
+```
 
 
 
