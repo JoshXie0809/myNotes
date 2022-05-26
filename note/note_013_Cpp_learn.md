@@ -961,7 +961,64 @@ int main() {
 
 ```
 
+```diff
 
+string 提供了字串比較方法
+@@ == @@ : 兩個變數儲存的字串完全相同;
+
+string s1, s2;
+getline(cin, s1);
+getline(cin, s2);
+if(s1 == s2) cout << "true"" << endl;
+
+@@ Inserting a string @@
+在字串中插入字串
+string s1("Hello, Josh");
+H e l l o , ' ' J o s  h
+0 1 2 3 4 5  6  7 8 9 10
+
+s1.insert(7, "Mr.");
+cout << s1 << endl;
+// output: Hello, Mr.Josh
+
+now string s1 change to
+
+H e l l o , ' ' M r .  J  o  s  h
+0 1 2 3 4 5  6  7 8 9 10 11 12 13
+
+@@ erase the char from string @@
+
+s1.erase(5, 13-5+1); // start 5, quantities 9
+// output: Hello
+
+now string s1 change to
+
+H e l l o
+0 1 2 3 4
+
+s1.erase(1);
+// delete char from 1 to end
+// output: H
+
+@@ searching @@
+在 string type 變數中尋找 字串
+
+string youth("Bill is so young, so young");
+int first = youth.find("young");
+// first is 11
+
+第一個找到 "young" 的地方是 11
+也可以用 .rfind right find, 找最後一個 young
+
+int last = youth.rfind("young");
+// last is 21
+
+@@ replace @@
+erase and insert
+
+```
+
+### [function](#top)
 
 
 
