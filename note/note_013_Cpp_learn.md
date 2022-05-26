@@ -1020,6 +1020,50 @@ erase and insert
 
 ### [function](#top)
 
+```diff
+
+@@ General form of a function @@
+
+[type] name([declaration_list]) // Function header
+{ 
+                                // Beginning
+                                .
+                                .
+                                What will be done // Function block
+                                .
+                                .
+
+}                               // End 
+
+@@ definition @@
+
+[type] 這個 function 會回傳什麼 type 的資料
+[naem] 這個 function 叫什麼名字
+
+[declaration_list] 這個 function 會使用哪些
+                   參數, 給定參數名及 type
+
+@@ 呼叫 function @@
+// prototype
+void func (int a, int b);
+
+// called
+int x = 1, y = 2;
+int z = fnuc(x, y)
+
+// when calling func
+// 參數 a giving x value
+// 參數 b giving y value 
+
+這種方式叫做 passing by value,
+指傳遞值, 會新創立變數來複製值
+
+
+
+
+```
+
+
 
 
 
