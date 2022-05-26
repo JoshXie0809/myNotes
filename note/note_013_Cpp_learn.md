@@ -862,8 +862,8 @@ in Source filen
 source file #include 多個 .h
 
 in layer [1] header file: basis.h
-#ifndefine_BASIS_H // if not define
-#define_BASIS_H
+#ifndefine _BASIS_H // if not define
+#define _BASIS_H
 
 // contect
 
