@@ -902,12 +902,62 @@ length: 13
 @@ initialize @@
 
 初始化, 即宣告變數,需要給予變數名, 
-但不只派需要用到多少空間, string
+但不需要指派用到多少空間, string
 會隨著變數儲存的字串不同, 自動調整
 所需要的空間這是改善 C 字串容易犯
 錯的問題
 
 如果變數初始化時, 沒有給值, 那麼
+將會生成一個長度為 0 的 string
+
++ example
+
+string message("good morning!")
+cout << message.length()
+// output is 13
+
+@@ string assignment @@
+
+當你指派新的字串給 string type
+的變數時, 新的字串將會取代變數原
+先儲存的字串, string 也會自動
+根據新字串的大小動態調整記憶體空間
+
+```
+example
+
+```cpp
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+string prompt("please enter some text\n"),
+       line(50, '-');
+
+int main() {
+    prompt += "Terrminate the imput with an empty line.\n";
+    cout << line << endl
+         << prompt
+         << line << endl;
+    
+    string text, nline;
+    while(true) {
+        getline(cin, nline);
+        if(nline.length() == 0) {
+            break;
+        }
+
+        text = nline + '\n' + text;
+    }
+    
+    cout << line << endl
+         << "your input in reverse order\n"
+         << line << endl
+         << text << endl;
+
+    return 0;
+}
 
 ```
 
