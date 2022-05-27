@@ -1151,10 +1151,37 @@ c++ 的 compiler 會自動偵測你放的變數值 type,
 
 ```
 
+### [Storage Classes and Namespaces](#top)
 
+```diff
 
+@@ storage class @@
+在 c++ 中, 可以使用的 storage classes 有
 
+extern  static  auto  register
 
+當一個變數被宣告時, 不只確定了變數名及變數 type,
+同樣也決定了儲存的 class type
+
+storage 決定了變數的生存時間, 也決定了, 一個
+programe 中哪些片段的程式碼可以調用這個變數,
+變數能被使用的片段被稱為 scope, 也就是能被看到
+的地區, 最常用的 scope 便是我們只能在變數宣告
+後調用這個變數, 在宣告前的程式碼是不能使用未宣告
+變數的
+```
+
+scope 有分為 3 級
+
+scope|可視範圍
+-:|:-
+block scope| 在一個 { 可視範圍 }, 當程序執行離開 { } 後無法使用 
+file scope| 一個編譯 cpp 檔案後的 module, 只有在這個 modiule 的 function 才可以使用
+program scope| 所有在 program 中的片段都能呼叫, 又被稱為 global
+
+```diff
+
+```
 
 
 
