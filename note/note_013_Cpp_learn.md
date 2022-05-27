@@ -36,7 +36,7 @@ data encapsulation :
 
 inheritance :
     by creating derived classes
-    
+
 
 OOP 好處 :
 過去方法直接寫 functions, 然後再運用在 datas 上,
@@ -1261,10 +1261,20 @@ program 所有角落的 code 的可以接觸並修改它
 external object 因此可以幫助 function 傳遞
 資料並不用指派變數, 但也增加不經意修改資料得可能
 
+@@ Using Global Objects @@
 
+要使用它就要在 file 一開始如同宣告一般變數一樣
+給予 type, name, value, 在整個 program 中
+只能定義一次
+
+其他檔案要加上 extern 代表 import object 
+from other source file
 
 ```
 
+```diff
+@@ static @@
+```
 
 
 
