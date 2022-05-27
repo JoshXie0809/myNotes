@@ -1258,8 +1258,10 @@ global object 屬於 extern storage class,
 若此 global object 沒有被指定 const, 那麼
 program 所有角落的 code 的可以接觸並修改它
 
-external object 因此可以幫助 function 傳遞
+external extern object 因此可以幫助 function 傳遞
 資料並不用指派變數, 但也增加不經意修改資料得可能
+
+external : { x }; int a; a 沒有被 {} 括住
 
 @@ Using Global Objects @@
 
@@ -1295,9 +1297,71 @@ data 中不像一般得變數當 block { } 執行結束就跟著 stack
 
 2. interal static object 
 亦即 static 宣告位置有被 { } 括住, 因此這個 static
-變數只有在 { }  
+變數只有在 { } 中才能使用
 
 ```
+
+```diff
+@@ THE SPECIFIERS auto AND register @@
+
+@@ auto @@
+
+我們一般宣告變數時, ( 在 { } 中宣告 )
+int a = 1; // 其實等同於 auto int a = 1;
+
+當程序讀取到第一個 auto 時, 會創造 stack 來存放
+{ } 中所有 auto 宣告的變數, 並且當 { } 程序執行
+結束時, 把生成的 stack 及內部存放的資料都刪掉
+
+@@ register @@
+auto 變數是存放在記憶體中的 stack, 每當 cpu 處理
+資料時需要調用資料時, 便會停下出去尋找資料, 這會拖慢
+執行速度, 因此電腦硬體設計人員想出在 cpu 當中加入
+高速記憶體, 這樣 cpu 需要資料時, 直接讀取不用停下
+但是 register 大小有限, register 變數只能用 int 
+大小的空間
+
+register int a = 11;
+
+```
+
+```diff
+@@ external function @@
+
+function 宣告都被預設為 extern
+所以想要使用別的 source file 的
+function, 只要宣告即可
+
+extern int functiin ( int a, int b );
+extren 缺少也沒關係, 因為是預設 extern
+但是若是 import from other source file
+還是加上 extern 避免疑惑
+
+這樣可能在一個 program 中, 不同的 
+source file 卻含有相同的 function 
+name, 這是大問題, 因此 static 請加
+在沒有要 export 的 function 前
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
