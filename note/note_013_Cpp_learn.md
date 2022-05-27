@@ -1177,13 +1177,93 @@ scope|可視範圍
 -:|:-
 block scope| 在一個 { 可視範圍 }, 當程序執行離開 { } 後無法使用 
 file scope| 一個編譯 cpp 檔案後的 module, 只有在這個 modiule 的 function 才可以使用
-program scope| 所有在 program 中的片段都能呼叫, 又被稱為 global
+program scope| 所有在 program 中的片段都能呼叫, 又被稱為 Global 變數
+
 
 ```diff
+@@ Global scope @@
+```
+example
+
+```cpp
+// file cutline1.cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+void cutline( void );
+void sep(void);
+
+string line; // Global variable
+
+
+int main() {
+    
+    while (getline(cin, line)) {
+        sep();
+        cout << "before cutline size is "<< line.size() << endl;
+        cutline();
+        sep();
+        cout << "after cutline size is "<< line.size() << endl;
+        sep();
+        cout << line << endl;
+        sep();
+        cout << endl << endl << endl;
+    }
+    
+
+    return 0;
+}
+
+void sep( void ) {
+    string s(50, '-');
+    cout << s << endl;
+}
 
 ```
 
+```cpp
 
+// cutline2.cpp
+
+#include <string>
+using namespace std;
+
+extern string line;
+
+void cutline(void) {
+    int i = line.size();
+    while( i-- >= 0)         
+        if( line[i] != ' ' && 
+         line[i] != '\t') break;
+    
+    line.resize(++i);
+}
+
+```
+
+complie file or makefile
+
+```bash
+g++ -o cutline.o cutline*.cpp
+```
+
+```
+@@ definition of global object @@
+
+當一個 function 所使用的變數並沒有定義在
+function 的 scope 中, 便是 global object 
+
+global object 屬於 extern storage class, 
+若此 global object 沒有被指定 const, 那麼
+program 所有角落的 code 的可以接觸並修改它
+
+external object 因此可以幫助 function 傳遞
+資料並不用指派變數, 但也增加不經意修改資料得可能
+
+
+
+```
 
 
 
