@@ -1274,6 +1274,17 @@ from other source file
 
 ```diff
 @@ static @@
+
+static 變數如同宣告一般變數
+
+static int count;
+
+static 變數與 extern 變數一樣,都是統一存放在 program 
+data 中不像一般得變數當 block { } 執行結束就跟著 stack 
+一起消滅, 而是會一直保存, 所以當 static int count; 
+已經宣告過, program 存在這個變數, 下一次在遇到這指令
+會跳過, 不再初始化這個變數, 這也是 static (永久) 
+
 ```
 
 
