@@ -1283,7 +1283,19 @@ static 變數與 extern 變數一樣,都是統一存放在 program
 data 中不像一般得變數當 block { } 執行結束就跟著 stack 
 一起消滅, 而是會一直保存, 所以當 static int count; 
 已經宣告過, program 存在這個變數, 下一次在遇到這指令
-會跳過, 不再初始化這個變數, 這也是 static (永久) 
+會跳過, 不再初始化這個變數, 這也是 static (永久) 意義
+
+而與 extern class object 相比, static class object
+在能使用的 scope 上有所限制
+
+1. external static object
+不被任何 { } 括住的宣告, 以 module 為單位, module 中
+任何位置都能使用該變數, 但是在不同 module, 即使命名相同
+的 static object, 也是不一樣的變數
+
+2. interal static object 
+亦即 static 宣告位置有被 { } 括住, 因此這個 static
+變數只有在 { }  
 
 ```
 
