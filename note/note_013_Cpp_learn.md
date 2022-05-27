@@ -1055,13 +1055,130 @@ int z = fnuc(x, y)
 // 參數 a giving x value
 // 參數 b giving y value 
 
+@@ passing by value @@
+
 這種方式叫做 passing by value,
 指傳遞值, 會新創立變數來複製值
 
+除了 passing by value 這種方法,
+c++ 還有 passed by reference
+
+@@  passed by reference @@
+
+這種方法不像 by value 是把 x, y
+的值傳給 a, b, 而是直接把 x, y
+傳入 function 內, 因此 function
+可以直接修改 x, y的值
+
+實施的方法是傳遞 x, y 變數的記憶體位置
+
+example
+
+time( &sek );
+
+在使用 time function 時, 我們傳入了 sek
+變數的記憶體位置, 可以想成一般電腦資料儲存的
+方式, 我們會知道檔案具體在哪顆硬碟的 C:/ or 
+D:/ ..., 然後會知道檔案在哪個資料夾, 最後我
+們會看到檔案的名字, 可以發現變數名好像對應了
+檔案名, 記憶體位置對應路徑, 然後變數值是儲存
+在檔案內的資料。
+
+@@ Jump to sub-Routines @@
+
+當在 main 中呼叫 function 時,
+會創造另一個空間來執行這個被呼叫
+的 function, 
+
+首先, 會將 funtion 需要用到的參
+數從最後一個參數值放到 stack 中,然
+後依序往前放置參數資料, 最後把在
+哪個記憶體位置呼叫此 function 的
+記憶體位置也放入 stack, 作為回傳值
+存入的地址, 然後在依序放入此 function
+中創造的變數, 然後當 function 執行完
+後由後往前消滅變數 ( LIFO, last in 
+first out ), 確保 function 額外創造 
+的變數不會污染到 main 的空間, 因為
+function 創造的變數一定早於其他被消滅
+
+可以發現 function 並沒有被多次寫入
+程式中, 而是在每一次被呼叫時, 將資料
+連接到 function, 這樣可以省去記憶體
+空間, 但是執行時間卻會因此被延長
 
 
+c++ 提供 inline function
+來解決多次呼叫問題
+
+@@ inline function @@
+
+在編譯時, 在每一個呼叫 function 的地方
+可以想成在 text editor 中將每一個 function
+的程式碼複製貼上, 然後直接執行, 省去呼叫的時間
+但是可以想見, 記憶體位置一定被塞爆
+
+@@ inline Definition @@
+
+example 
+
+inline int max( int x, int y ) {
+    return (x >= y ? x : y);
+
+}
+
+
+@@ overloading @@
+
+在寫程式時需要避免相同命名, 但若是功能相同,
+僅因為需要傳入的變數, 和 return 的 type 
+不同, 就要想不同命名實在麻煩
+
+example
+
+int     int_max( int x, int y);
+double  dbl_max( double x, double y);
+
+面對這樣的情形, c++ 允許他們使用相同名字 max
+
+int     max( int x, int y);
+double  max( double x, double y);
+
+c++ 的 compiler 會自動偵測你放的變數值 type,
+來判斷對應的呼叫 function, 但是這會拖慢執行效率,
+還有可能會使該放入什麼變數造成疑惑, 因此分開命名
+比較推薦這樣做。
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
