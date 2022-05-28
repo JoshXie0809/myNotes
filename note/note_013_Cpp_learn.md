@@ -1341,7 +1341,7 @@ extren 缺少也沒關係, 因為是預設 extern
 source file 卻含有相同的 function 
 name, 這是大問題, 因此 static 請加
 在沒有要 export 的 function 前
-
+加上 static
 
 ```
 
