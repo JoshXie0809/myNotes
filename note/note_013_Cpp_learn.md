@@ -1367,7 +1367,86 @@ example
 
 ```cpp
 
+#include <string>
+
+namespace MySpace {
+    // extern varible mess in MySpace
+    std::string mess = "Within namespace MySpace";
+    
+    // extern varible count in MySpace
+    // MySpace::count
+    int count = 0; 
+
+    // extern function f in Myspace
+    // prototype
+    // MySpace::f
+    double f(double);
+}
+
+namespace YourSpace {
+    // extern varible mess in YourSpace
+    std::string mess = "Within namespace YourSpace";
+
+    void f(void) {
+        mess += "!";
+    }
+}
+
+// back to MySpace
+namespace MySpace {
+    int g (void); // prototype
+    double f (double y) {
+        return y / 10.0;
+    }
+}
+
+int MySpace::g() {
+    return ++count;
+}
+
+#include <iostream>
+
+int main() {
+    std::cout << "\ntesting namespaces\n\n"
+              << MySpace::mess << std::endl;
+    MySpace::g();
+
+    std::cout << "\nreturn value g() : " << MySpace::g()
+              << "\nreturn value f() : " << MySpace::f(1.234)
+              << "\n--------------------------" << std::endl;
+              
+    std::cout << YourSpace::mess << std::endl;
+    YourSpace::f();
+    std::cout << YourSpace::mess << std::endl << std::endl;
+    return 0;
+} 
+
 ```
+
+```diff
+
+只要在 namespace MySpace {
+    ....
+    ....
+} 中或是 MySpace::物體
+
+using MySpace; 則可以不用在輸入 MySpace::
+直接使用
+
+```
+
+### [References and Pointers](#top)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
