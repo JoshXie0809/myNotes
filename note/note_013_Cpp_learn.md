@@ -1352,7 +1352,20 @@ name, 這是大問題, 因此 static 請加
 前面提到 global function 和 global variable
 的使用十分危險, 一不小心就會修改值或造成 function
 overlaoding, 因此 c++, 提供 namespace 來避免
-命名衝突的問題, 在一個 namespace
+命名衝突的問題, 在一個 namespace 中自然就不用擔心
+與其他 name space 有衝突可能了
+
+namespace myLib {
+    int count;
+    double calculate(double, int ...);
+    // code ...
+}
+
+```
+
+example 
+
+```cpp
 
 ```
 
