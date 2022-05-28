@@ -1438,10 +1438,24 @@ using MySpace; 則可以不用在輸入 MySpace::
 ### [References and Pointers](#top)
 
 
+```diff
 
+@@ set reference @@
 
+float x = 1.23, &rx = x;
 
+&rx 是另一種表達 x 的方式
+rx 就是 x
 
+rx++ // 跟 x++ 是一樣的
+rx // 就是 x
+&rx // 記憶體位置
+&x // 記憶體位置, 數值會跟 &rx 相同
+
+! reference 創造時就必須給予資料
+! 且宣告後就不能修改
+
+```
 
 
 
