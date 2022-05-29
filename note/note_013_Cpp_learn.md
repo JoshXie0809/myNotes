@@ -1628,8 +1628,35 @@ int main() {
     return 0;
 }
 
+```
+
+```diff
+
+@@ struct @@
+
+struct 源於 C 語言, 在 c 語言的 struct 中
+可以想成只能使用 public: property 的 class
+
+在 c++ 中,
+struct { string year, day, hour; };
+等於
+
+class { public: string year, day, hour; };
+
+值得注意的是, struct 與 class 相反,
+預設是 public: ...
+
+
+在 c++ 中,
+user 也可以使用 struct 來定義 OOP,
+基本上與 class 差異就只有預設是 public
+或是 private 的不同
+
+會特別創造 struct, 就是要讓 c 的 code
+也能在 c++ 使用
 
 ```
+
 
 
 
