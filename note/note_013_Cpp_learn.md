@@ -1523,9 +1523,77 @@ class Demo {
   -------------------------------------
   
   -------------------------------------
+
+! }; // 這裡要加 ; !!!!!!!!!
+
+
+! class 預設所有的 member access 是 private 的
+
+```
+example account.h
+
+```cpp
+
+#ifndef _ACCOUNT_H  // 避免重複  define
+#define _ACCOUNT_H
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Account {
+
+private:
+    string name;
+    unsigned long nbr;
+    double balance;
+
+public:
+    bool initialize(const string&, unsigned long, double);
+    void display();
+
+};
+
+#endif
+
+```
+
+example account.cpp
+
+```cpp
+
+#include "t15.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+// seting function decalre in t15.h
+// Account::... , 使用 Acoount member
+
+bool Account::initialize(const string& i_name, 
+                   unsigned long i_nbr,
+                   double i_balance ) 
+{
+    if(i_name.size() < 1 ) return false;
+    name = i_name;
+    nbr = i_nbr;
+    balance = i_balance;
+    return true;
+}
+
+void Account::display()
+{
+    cout << fixed << setprecision(2)
+    << "--------------------------------------\n"
+    << "Account holder: " << name << '\n'
+    << "Account number: " << nbr << '\n'
+    << "Account balance: " << balance << '\n'
+    << "--------------------------------------\n"
+    << endl;
 }
 
 ```
+
 
 
 
