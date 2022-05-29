@@ -1593,7 +1593,43 @@ void Account::display()
 }
 
 ```
+using class
 
+```cpp
+
+#include "t15.h"
+
+int main() {
+    
+    // Account 就像 user define type, 像 int, double ...
+    
+    Account current1, current2;
+     
+    current1.initialize("Mr.Josh", 0, 1e6 + 0.3456);
+    current1.display();
+    
+    // class member 只能接觸 public 的功能
+    // 使用方式 : "."
+    
+    current2 = current1; // obj assigned is ok
+    current2.display();
+
+    current2.initialize("Jones, Tom", 3512347, 199.40);
+    current2.display();
+    
+    Account& mtr = current1;
+    mtr.display();
+    
+    Account *ptr = &current2;
+    ptr->display();
+    
+    // ptr->display() == (*ptr).display()
+    
+    return 0;
+}
+
+
+```
 
 
 
