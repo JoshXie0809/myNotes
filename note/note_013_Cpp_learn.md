@@ -1562,7 +1562,7 @@ example account.cpp
 
 ```cpp
 
-#include "t15.h"
+#include "account.h"
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -1594,10 +1594,11 @@ void Account::display()
 
 ```
 using class
+in account_main.cpp
 
 ```cpp
 
-#include "t15.h"
+#include "account.h"
 
 int main() {
     
@@ -1657,35 +1658,53 @@ user 也可以使用 struct 來定義 OOP,
 
 ```
 
+### [method](#top)
 
+```diff
 
+@@ constructors @@
 
+在之前的例子中 class Account 並沒有要求 object
+initialize, 直到 Account object 第一次被呼叫
+method initialize, 在被初始化前, 這些 objecct
+是危險的, 因此 c++ 使用 constructors 來解決問題
 
+constructor 的名字, 就是 class 的名字
+constructor 不會回傳資料, 連 void 都不是
 
+值得一題的地方是, Account class 的 object,
+無法呼叫 constructor 方法, 這也是它沒有 type 
+的原因
 
+另外, 若是 constructor 沒有參數的話被稱為 default
+constuctor
 
+@@ Define constructors @@
 
+account.h 例子中
+public 那邊
+Account(....);
 
+account.cpp
+Account::Account(...) {
+  name = i_name; ...
+}
 
+! constructor 無法被呼叫
 
+@@ define destructor @@
+account.h 例子中
+public 那邊
+~Account();
 
+Account::~Account() { } 
 
+使用
+obj.~Account();
 
+便可以刪除這個 Acconut class obj
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
