@@ -1504,6 +1504,28 @@ int main() {
 
 ```
 
+### [defining class](#top)
+
+```diff
+
+class 是 c++ 作為 OOP 語言中最重要的要素
+class define, 需要定義 property 和 capability 
+
+class scheme
+
+class Demo {
+  public: // can access externally
+  -------------------------------------
+  
+  -------------------------------------
+  
+  private: // only can use intenally
+  -------------------------------------
+  
+  -------------------------------------
+}
+
+```
 
 
 
