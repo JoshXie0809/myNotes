@@ -1455,7 +1455,72 @@ rx // 就是 x
 ! reference 創造時就必須給予資料
 ! 且宣告後就不能修改
 
+
+@@ define pointers @@
+
+宣告 pointer, 只需要如同宣告一般變數時,
+前方加上 *var, 就代表創造指標指向某 type
+
+int *ptr
+
+指標變數 ptr 需要的是, 我們想指向變數的地址
+所以用 "&" 取得變數地址, 存入 ptr 中, 所以
+我們生成的變數 ptr 內部存放的是 int type 變數
+的記憶體位置, 當要取值或修改 "*" 
+
 ```
+example 
+
+```cpp
+
+#include <iostream>
+using namespace std;
+
+int var, *ptr;
+
+int main() {
+    var = 100;
+    ptr = &var;
+
+    cout << "var " << var 
+         << ", *ptr " << *ptr << endl;
+
+    cout << "&var " << &var << 
+            ", ptr " << ptr << endl;
+
+    *ptr += 7314;
+
+    cout << "var " << var 
+         << ", *ptr " << *ptr << endl;
+
+    return 0; 
+}
+
+
+// output
+// var 100, *ptr 100
+// &var 0x55b5e3809158, ptr 0x55b5e3809158
+// var 7414, *ptr 7414
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
