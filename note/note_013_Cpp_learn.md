@@ -1699,6 +1699,31 @@ public 那邊
 
 Account::~Account() { ... } 
 
+@@ Access method @@
+
+如上所述, 當你想要取得 object 的 property 時,
+可以將 property 由 private 設置成 public,
+這樣我們就可以直接調用
+
+example
+obj.properties ...
+
+這樣做的壞處是, 當你在這個 program 的最後, 想要將 properties
+換名字 name "a" to name "b", 你就要修改整個 program
+的 source file 來達成換名字的目的
+
+若你是使用 access method 的方法
+
+public:
+    string getname( void );
+
+string Account::getname(void) {
+    return name;
+}
+
+這樣的話僅僅需要修改這裡 function 中的 name 就可以達成目的
+
+
 ```
 
 
