@@ -1724,9 +1724,28 @@ string Account::getname(void) {
 這樣的話僅僅需要修改這裡 function 中的 name 就可以達成目的
 
 
+@@ read-only method @@
+class 如同其他 c++ 預設的 type 
+可以宣告 const class obj(init...);
+
+但有趣得地方在於, 當你宣告 obj 是 const 時,
+這個 class 所有的 method 都將無法調用, 當你沒有
+宣告 method 是 read-only 時, 因為 obj 無法確認
+你隨後會不會修改它, 所以乾脆全面禁止你使用
+
+@@ 宣告 read-only method @@
+
+加入 const 即可
+
+public:
+    string getname( void ) const;
+
+string Account::getname(void) const {
+    return name;
+}
+
 ```
-
-
+### [Member Objects and Static member](#top)
 
 
 
