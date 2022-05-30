@@ -1697,12 +1697,7 @@ account.h 例子中
 public 那邊
 ~Account();
 
-Account::~Account() { } 
-
-使用
-obj.~Account();
-
-便可以刪除這個 Acconut class obj
+Account::~Account() { ... } 
 
 ```
 
