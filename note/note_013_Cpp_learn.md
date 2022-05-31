@@ -1747,8 +1747,9 @@ string Account::getname(void) const {
 ```
 ### [Member Objects and Static member](#top)
 
+Skip
 
-
+### [array](#top)
 
 
 
