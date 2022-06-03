@@ -1751,7 +1751,6 @@ Skip
 
 ### [array](#top)
 
-
-
+using C array
 
 
